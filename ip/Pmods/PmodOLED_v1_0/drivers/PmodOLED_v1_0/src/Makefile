@@ -25,4 +25,5 @@ include:
 	${CP} $(INCLUDEFILES) $(INCLUDEDIR)
 
 clean:
-	rm -rf ${OBJECTS} ${ASSEMBLY_OBJECTS}
+	rm -rf ${OBJECTS} 
+	rm -rf ${ASSEMBLY_OBJECTS}
