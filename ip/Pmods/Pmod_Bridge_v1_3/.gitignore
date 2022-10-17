@@ -11,7 +11,7 @@ gui/*
 
 !xgui
 xgui/*
-!xgui/pmod_bridge_v1_1.tcl
+!xgui/pmod_bridge_v1_3.tcl
 
 !utils
 util/*

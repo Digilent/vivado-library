@@ -1,2 +1,0 @@
-# This file is automatically written.  Do not modify.
-proc gen_USERPARAMETER_USE_PULLUPS_ENABLEMENT {Top_Row_Interface } {expr {"$Top_Row_Interface" == "I2C"}}

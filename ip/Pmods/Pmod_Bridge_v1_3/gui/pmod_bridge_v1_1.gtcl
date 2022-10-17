@@ -1,0 +1,3 @@
+# This file is automatically written.  Do not modify.
+proc gen_USERPARAMETER_Use_Pullups_Top_Row_ENABLEMENT {Top_Row_Interface } {expr {"$Top_Row_Interface" == "I2C"}}
+proc gen_USERPARAMETER_Use_Pullups_Bottom_Row_ENABLEMENT {Bottom_Row_Interface } {expr {"$Bottom_Row_Interface" == "I2C"}}

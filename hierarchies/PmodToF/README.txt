@@ -10,7 +10,8 @@ Hierarchy Requirements
 
 Hierarchy Port Requirements
 ---------------------------
-* IIC clock frequency 100KHz
+* s_axi_aclk: The AXI IIC IP core requires that the AXI clock frequency be at least 25 MHz and 25 times faster than the SCL clock frequency.
+Since the ToF requires an IIC SCL clock frequency of 100KHz, s_axi_aclk's frequency must be at least 25 MHz.
 
 Constraints
 -----------

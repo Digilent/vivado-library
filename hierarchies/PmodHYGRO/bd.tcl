@@ -185,7 +185,7 @@ proc create_hier_cell_PmodHYGRO_0 { parentCell nameHier } {
    CONFIG.PMOD {Custom} \
    CONFIG.Top_Row_Interface {I2C} \
    CONFIG.USE_BOARD_FLOW {true} \
-   CONFIG.USE_PULLUPS {true} \
+   CONFIG.Use_Pullups_Top_Row {true} \
  ] $pmod_bridge_0
 
   # Create interface connections

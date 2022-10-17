@@ -54,3 +54,9 @@ file delete -force $tempdir
 # call the process created in the bd.tcl script. recreates the described hierarchy
 source -notrace [file join $script_dir "bd.tcl"]
 create_hier_cell_${pmod}_* / $nameHier
+
+# add README.txt text to the project as a comment attached to the hierarchy
+set fp [open [file join $script_dir "README.txt"] r]
+set comment_text [read $fp]
+close $fp
+set_property USER_COMMENTS.readme $comment_text [get_bd_cells $nameHier/pmod_bridge_0]
