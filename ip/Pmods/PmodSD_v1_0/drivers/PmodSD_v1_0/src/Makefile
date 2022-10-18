@@ -41,7 +41,7 @@ include: ${IPNAME}_includes
 
 ${IPNAME}_includes:
 	${CP} ${INCLUDEFILES} ${INCLUDEDIR}
-	if not exist $(INCLUDEDIR)/utility md $(INCLUDEDIR)/utility
+	if not exist "$(INCLUDEDIR)/utility" md "$(INCLUDEDIR)/utility"
 	${CP} utility/*.h $(INCLUDEDIR)/utility
 
 clean:
