@@ -6,10 +6,9 @@ puts_ipfile $f_xdc {# DCO Clock period}
 puts_ipfile $f_xdc {set tDCO [get_property CLKIN1_PERIOD [get_cells InstDataPath/Digitizer_MMCM]];}
 puts_ipfile $f_xdc {set tDCO_half [expr $tDCO/2];}
 puts_ipfile $f_xdc {create_clock -period $tDCO -name DcoClkIn -waveform "0.000 $tDCO_half" [get_ports DcoClkIn -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_clock_groups -asynchronous -group DcoClkIn -group [get_clocks -of_objects [get_ports SysClk100]]}
-puts_ipfile $f_xdc {}
-
 puts_ipfile $f_xdc {create_generated_clock -name CG_InputClk -source [get_pins InstCG_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ClockGenPriRefClk]] -divide_by 1 [get_ports CG_InputClk_p]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks {DcoClkIn}] -group [get_clocks -include_generated_clocks {SysClk100 ClockGenPriRefClk CG_InputClk}]}
 puts_ipfile $f_xdc {}
 
 close_ipfile $f_xdc

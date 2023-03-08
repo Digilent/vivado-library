@@ -96,17 +96,34 @@ puts_ipfile $f_xdc {# Maximum net skew on Eclypse Z7 is 1mm; @ 140mm / 1ns this 
 puts_ipfile $f_xdc {set net_skew_ecl 0.007}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Using the Vivado 2021.1 Language Template for input delay constraints, for a}
-puts_ipfile $f_xdc {# source-synchronous, center-aligned double data rate interface and applying it to the ADC}
-puts_ipfile $f_xdc {# interface, it results that we would need to add $tDCO_half to each constraint value.}
-puts_ipfile $f_xdc {# However, based on post-implementation Vivado timing results, the conclusion was that the}
-puts_ipfile $f_xdc {# clock is "hurried" so much by the MMCM that timing should be analyzed versus the}
-puts_ipfile $f_xdc {# previous data phase, for both setup and hold. Therefore, I removed the â€œ+ $tDCO_halfâ€?}
-puts_ipfile $f_xdc {# term from the below constraints.}
-puts_ipfile $f_xdc {# Also, I adjusted the MMCM clock output phase to 120...127.5deg (depending on sampling}
-puts_ipfile $f_xdc {# period) to split the negative slack between setup and hold and to further optimize}
-puts_ipfile $f_xdc {# timing (see DataPath.vhd and PkgZmodDigitizer.vhd for more details).}
-for {set index 0} {$index < 14} {incr index} {
+# Only generate constraints for 
+set data_bus_width [get_property PARAM_VALUE.kADC_Width]
+puts "  data_bus_width: $data_bus_width"
+
+puts_ipfile $f_xdc {# The constraints below were written based on the Vivado 2021.1}
+puts_ipfile $f_xdc {# Language Template for input delay constraints, for a}
+puts_ipfile $f_xdc {# source-synchronous, edge-aligned double data rate interface }
+puts_ipfile $f_xdc {# (Clock with MMCM) and applying it to the ADC interface.}
+puts_ipfile $f_xdc {# Also, the MMCM clock output phase was adjusted to 120...127.5deg}
+puts_ipfile $f_xdc {# (depending on sampling period) to split the negative slack between}
+puts_ipfile $f_xdc {# setup and hold and to further optimize timing (see DataPath.vhd and}
+puts_ipfile $f_xdc {# PkgZmodADC.vhd for more details).}
+puts_ipfile $f_xdc {# ===== IMPORTANT! =====}
+puts_ipfile $f_xdc {# In case of migration to the Ultrascale+ architecture is necessary, care}
+puts_ipfile $f_xdc {# must be taken since on that architecture, the MMCM}
+puts_ipfile $f_xdc {# "PHASESHIFT_MODE" property is by default set to LATENCY instead of}
+puts_ipfile $f_xdc {# WAVEFORM. This property change modifies the destination clock}
+puts_ipfile $f_xdc {# waveform in the timing analysis i.e. it changes the destination}
+puts_ipfile $f_xdc {# clock edge on which timing analysis is performed. The result is}
+puts_ipfile $f_xdc {# that timing analysis will be performed between incorrect edges,}
+puts_ipfile $f_xdc {# thus failing timing.}
+puts_ipfile $f_xdc {# For the Ultrascale+ architecture, the solution would be to change the}
+puts_ipfile $f_xdc {# constraints template to source-synchronous, CENTER-aligned double}
+puts_ipfile $f_xdc {# data rate interface. As a result, the way the constraint values are}
+puts_ipfile $f_xdc {# computed will be different i.e. $tDCO_half will need to be added to}
+puts_ipfile $f_xdc {# all constraint values.}
+puts_ipfile $f_xdc {# ======================}
+for {set index 0} {$index < $data_bus_width} {incr index} {
 	set constr_block {set_input_delay -clock [get_clocks DcoClkIn] -clock_fall -min [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
 set_input_delay -clock [get_clocks DcoClkIn] -clock_fall -max [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
 set_input_delay -clock [get_clocks DcoClkIn] -min -add_delay [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]

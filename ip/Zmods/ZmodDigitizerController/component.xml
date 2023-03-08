@@ -335,7 +335,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f5db5219</spirit:value>
+            <spirit:value>72e556bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -379,21 +379,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>428623d2</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_implementation</spirit:name>
-        <spirit:displayName>Implementation</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>45fab15e</spirit:value>
+            <spirit:value>367645c1</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -408,6 +394,20 @@
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
             <spirit:value>d6a6b079</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_implementation</spirit:name>
+        <spirit:displayName>Implementation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:implementation</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_implementation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>bb7d32cf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1133,6 +1133,10 @@
         <spirit:userFileType>xdc</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
         <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>early</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/PkgZmodDigitizer.vhd</spirit:name>
@@ -1294,6 +1298,13 @@
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
+      <spirit:name>xilinx_productguide_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>docs/ZmodDigitizerController.pdf</spirit:name>
+        <spirit:userFileType>pdf</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
       <spirit:name>xilinx_implementation_view_fileset</spirit:name>
       <spirit:file>
         <spirit:name>src/generate_timing_xdc.xit</spirit:name>
@@ -1310,13 +1321,6 @@
           <spirit:name>processing_order</spirit:name>
           <spirit:value>early</spirit:value>
         </spirit:define>
-      </spirit:file>
-    </spirit:fileSet>
-    <spirit:fileSet>
-      <spirit:name>xilinx_productguide_view_fileset</spirit:name>
-      <spirit:file>
-        <spirit:name>docs/ZmodDigitizerController.pdf</spirit:name>
-        <spirit:userFileType>pdf</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
   </spirit:fileSets>
@@ -1455,11 +1459,11 @@
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Digilent</xilinx:vendorDisplayName>
       <xilinx:vendorURL>https://www.digilent.com</xilinx:vendorURL>
-      <xilinx:coreRevision>2</xilinx:coreRevision>
+      <xilinx:coreRevision>3</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:ZmodDigitizerController:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2022-11-12T00:49:28Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-03-08T13:25:18Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.df@7b2ddaf7_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@39d996ea_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
@@ -5439,12 +5443,34 @@
         <xilinx:tag xilinx:name="ui.data.coregen.df@3f38b59e_ARCHIVE_LOCATION">d:/Github/Eclypse-Review/ddr-streaming-awg-digitizer/hw/repo/vivado-library/ip/Zmods/ZmodDigitizerController</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@4c612941_ARCHIVE_LOCATION">d:/Github/Eclypse-Review/ddr-streaming-awg-digitizer/hw/repo/vivado-library/ip/Zmods/ZmodDigitizerController</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@6fc02403_ARCHIVE_LOCATION">d:/Github/Eclypse-Review/ddr-streaming-awg-digitizer/hw/repo/vivado-library/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@79004e16_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@155c8104_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@79db3b13_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e15b368_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2202d006_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@350f5cb2_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@367e628e_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2d5e2356_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@12ebd208_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1dfdae35_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@57a52a5f_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@67419438_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@11d2d0f9_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@502d7a3b_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2dbf6386_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@70248a76_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73bf6e6a_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73a5f345_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6b18e067_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3ee0fd33_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63da54a1_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f92ba42_ARCHIVE_LOCATION">g:/viv-lib/ip/Zmods/ZmodDigitizerController</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="b2b6f517"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="de29435c"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="cfd810da"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="40408c1d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="906686da"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="df9264d9"/>
