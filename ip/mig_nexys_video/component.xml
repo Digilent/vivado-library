@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>digilentinc.com</spirit:vendor>
-  <spirit:library>Default</spirit:library>
+  <spirit:library>IP</spirit:library>
   <spirit:name>mig_nexys_video</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
@@ -4963,10 +4963,10 @@
   <spirit:vendorExtensions>
     <xilinx:coreExtensions>
       <xilinx:supportedFamilies>
-        <xilinx:family xilinx:lifeCycle="Production">artix7</xilinx:family>
-        <xilinx:family xilinx:lifeCycle="Production">artix7l</xilinx:family>
-        <xilinx:family xilinx:lifeCycle="Production">aartix7</xilinx:family>
-        <xilinx:family xilinx:lifeCycle="Production">qartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Beta">artix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Beta">artix7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Beta">aartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Beta">qartix7</xilinx:family>
       </xilinx:supportedFamilies>
       <xilinx:taxonomies>
         <xilinx:taxonomy>/AXI_Infrastructure</xilinx:taxonomy>
@@ -4977,12 +4977,13 @@
       <xilinx:autoFamilySupportLevel>level_0</xilinx:autoFamilySupportLevel>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Digilent</xilinx:vendorDisplayName>
-      <xilinx:coreRevision>11</xilinx:coreRevision>
+      <xilinx:coreRevision>1</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>Digilent:default:design_1_mig_7series_0_0:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>Digilent:default:mig_nexys_video:1.0</xilinx:canUpgradeFrom>
+        <xilinx:canUpgradeFrom>digilentinc.com:Default:mig_nexys_video:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2023-06-09T22:50:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-06-09T23:19:02Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2023.1</xilinx:xilinxVersion>
