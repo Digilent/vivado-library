@@ -1,38 +1,119 @@
+
+# Loading additional proc with user specified bodies to compute parameter values.
+source [file join [file dirname [file dirname [info script]]] gui/mig_nexys_video_v1_0.gtcl]
+
 # Definitional proc to organize widgets for parameters.
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
   set Page_0 [ipgui::add_page $IPINST -name "Page 0" -display_name {Main}]
-  ipgui::add_param $IPINST -name "TEMP_MON_EN" -parent ${Page_0} -widget comboBox
-  ipgui::add_param $IPINST -name "DEBUG_PORT" -parent ${Page_0} -widget comboBox
-  ipgui::add_param $IPINST -name "nBANK_MACHS" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "UI_EXTRA_CLOCKS" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "RST_ACT_LOW" -parent ${Page_0} -widget comboBox
+  ipgui::add_param $IPINST -name "RST_ACT_LOW" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "SIMULATION" -parent ${Page_0} -widget comboBox
+  ipgui::add_param $IPINST -name "IS_CLK_SHARED" -parent ${Page_0} -widget comboBox
 
   #Adding Page
   set Clocks [ipgui::add_page $IPINST -name "Clocks"]
-  ipgui::add_param $IPINST -name "MMCM_VCO" -parent ${Clocks}
   ipgui::add_param $IPINST -name "MMCM_MULT_F" -parent ${Clocks}
   ipgui::add_param $IPINST -name "MMCM_DIVCLK_DIVIDE" -parent ${Clocks}
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT4_DIVIDE" -parent ${Clocks}
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT3_DIVIDE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "REFCLK_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "DIFF_TERM_REFCLK" -parent ${Clocks} -widget comboBox
+  ipgui::add_param $IPINST -name "DIFF_TERM_SYSCLK" -parent ${Clocks} -widget comboBox
   ipgui::add_param $IPINST -name "MMCM_CLKOUT2_DIVIDE" -parent ${Clocks}
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT1_DIVIDE" -parent ${Clocks}
   ipgui::add_param $IPINST -name "MMCM_CLKOUT0_DIVIDE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT4_DIVIDE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT2_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT0_EN" -parent ${Clocks} -widget comboBox
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT4_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT1_EN" -parent ${Clocks} -widget comboBox
+  ipgui::add_param $IPINST -name "REFCLK_TYPE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT1_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT2_EN" -parent ${Clocks} -widget comboBox
   ipgui::add_param $IPINST -name "MMCM_CLKOUT4_EN" -parent ${Clocks} -widget comboBox
   ipgui::add_param $IPINST -name "MMCM_CLKOUT3_EN" -parent ${Clocks} -widget comboBox
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT2_EN" -parent ${Clocks} -widget comboBox
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT1_EN" -parent ${Clocks} -widget comboBox
-  ipgui::add_param $IPINST -name "MMCM_CLKOUT0_EN" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT0_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT3_DIVIDE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT3_FREQ" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_VCO" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "MMCM_CLKOUT1_DIVIDE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "SYSCLK_TYPE" -parent ${Clocks}
+  ipgui::add_param $IPINST -name "UI_EXTRA_CLOCKS" -parent ${Clocks} -widget comboBox
 
   #Adding Page
   set AXI_Interface [ipgui::add_page $IPINST -name "AXI Interface"]
   ipgui::add_param $IPINST -name "C_S_AXI_ADDR_WIDTH" -parent ${AXI_Interface}
-  ipgui::add_param $IPINST -name "C_S_AXI_SUPPORTS_NARROW_BURST" -parent ${AXI_Interface} -widget comboBox
-  ipgui::add_param $IPINST -name "C_S_AXI_DATA_WIDTH" -parent ${AXI_Interface} -widget comboBox
-  ipgui::add_param $IPINST -name "C_S_AXI_MEM_SIZE" -parent ${AXI_Interface}
 
+  ipgui::add_param $IPINST -name "C_S_AXI_MEM_SIZE"
+  ipgui::add_param $IPINST -name "TEMP_MON_CONTROL"
+  ipgui::add_param $IPINST -name "CLKOUT0_PHASE"
 
+}
+
+proc update_PARAM_VALUE.MMCM_CLKOUT0_FREQ { PARAM_VALUE.MMCM_CLKOUT0_FREQ PARAM_VALUE.MMCM_VCO PARAM_VALUE.MMCM_CLKOUT0_DIVIDE } {
+	# Procedure called to update MMCM_CLKOUT0_FREQ when any of the dependent parameters in the arguments change
+	
+	set MMCM_CLKOUT0_FREQ ${PARAM_VALUE.MMCM_CLKOUT0_FREQ}
+	set MMCM_VCO ${PARAM_VALUE.MMCM_VCO}
+	set MMCM_CLKOUT0_DIVIDE ${PARAM_VALUE.MMCM_CLKOUT0_DIVIDE}
+	set values(MMCM_VCO) [get_property value $MMCM_VCO]
+	set values(MMCM_CLKOUT0_DIVIDE) [get_property value $MMCM_CLKOUT0_DIVIDE]
+	set_property value [gen_USERPARAMETER_MMCM_CLKOUT0_FREQ_VALUE $values(MMCM_VCO) $values(MMCM_CLKOUT0_DIVIDE)] $MMCM_CLKOUT0_FREQ
+}
+
+proc validate_PARAM_VALUE.MMCM_CLKOUT0_FREQ { PARAM_VALUE.MMCM_CLKOUT0_FREQ } {
+	# Procedure called to validate MMCM_CLKOUT0_FREQ
+	return true
+}
+
+proc update_PARAM_VALUE.MMCM_CLKOUT1_FREQ { PARAM_VALUE.MMCM_CLKOUT1_FREQ PARAM_VALUE.MMCM_VCO PARAM_VALUE.MMCM_CLKOUT1_DIVIDE } {
+	# Procedure called to update MMCM_CLKOUT1_FREQ when any of the dependent parameters in the arguments change
+	
+	set MMCM_CLKOUT1_FREQ ${PARAM_VALUE.MMCM_CLKOUT1_FREQ}
+	set MMCM_VCO ${PARAM_VALUE.MMCM_VCO}
+	set MMCM_CLKOUT1_DIVIDE ${PARAM_VALUE.MMCM_CLKOUT1_DIVIDE}
+	set values(MMCM_VCO) [get_property value $MMCM_VCO]
+	set values(MMCM_CLKOUT1_DIVIDE) [get_property value $MMCM_CLKOUT1_DIVIDE]
+	set_property value [gen_USERPARAMETER_MMCM_CLKOUT1_FREQ_VALUE $values(MMCM_VCO) $values(MMCM_CLKOUT1_DIVIDE)] $MMCM_CLKOUT1_FREQ
+}
+
+proc validate_PARAM_VALUE.MMCM_CLKOUT1_FREQ { PARAM_VALUE.MMCM_CLKOUT1_FREQ } {
+	# Procedure called to validate MMCM_CLKOUT1_FREQ
+	return true
+}
+
+proc update_PARAM_VALUE.MMCM_CLKOUT3_FREQ { PARAM_VALUE.MMCM_CLKOUT3_FREQ PARAM_VALUE.MMCM_VCO PARAM_VALUE.MMCM_CLKOUT3_DIVIDE } {
+	# Procedure called to update MMCM_CLKOUT3_FREQ when any of the dependent parameters in the arguments change
+	
+	set MMCM_CLKOUT3_FREQ ${PARAM_VALUE.MMCM_CLKOUT3_FREQ}
+	set MMCM_VCO ${PARAM_VALUE.MMCM_VCO}
+	set MMCM_CLKOUT3_DIVIDE ${PARAM_VALUE.MMCM_CLKOUT3_DIVIDE}
+	set values(MMCM_VCO) [get_property value $MMCM_VCO]
+	set values(MMCM_CLKOUT3_DIVIDE) [get_property value $MMCM_CLKOUT3_DIVIDE]
+	if { [gen_USERPARAMETER_MMCM_CLKOUT3_FREQ_ENABLEMENT $values(MMCM_VCO) $values(MMCM_CLKOUT3_DIVIDE)] } {
+		set_property enabled true $MMCM_CLKOUT3_FREQ
+	} else {
+		set_property enabled false $MMCM_CLKOUT3_FREQ
+	}
+}
+
+proc validate_PARAM_VALUE.MMCM_CLKOUT3_FREQ { PARAM_VALUE.MMCM_CLKOUT3_FREQ } {
+	# Procedure called to validate MMCM_CLKOUT3_FREQ
+	return true
+}
+
+proc update_PARAM_VALUE.MMCM_CLKOUT4_FREQ { PARAM_VALUE.MMCM_CLKOUT4_FREQ PARAM_VALUE.MMCM_VCO PARAM_VALUE.MMCM_CLKOUT4_DIVIDE } {
+	# Procedure called to update MMCM_CLKOUT4_FREQ when any of the dependent parameters in the arguments change
+	
+	set MMCM_CLKOUT4_FREQ ${PARAM_VALUE.MMCM_CLKOUT4_FREQ}
+	set MMCM_VCO ${PARAM_VALUE.MMCM_VCO}
+	set MMCM_CLKOUT4_DIVIDE ${PARAM_VALUE.MMCM_CLKOUT4_DIVIDE}
+	set values(MMCM_VCO) [get_property value $MMCM_VCO]
+	set values(MMCM_CLKOUT4_DIVIDE) [get_property value $MMCM_CLKOUT4_DIVIDE]
+	set_property value [gen_USERPARAMETER_MMCM_CLKOUT4_FREQ_VALUE $values(MMCM_VCO) $values(MMCM_CLKOUT4_DIVIDE)] $MMCM_CLKOUT4_FREQ
+}
+
+proc validate_PARAM_VALUE.MMCM_CLKOUT4_FREQ { PARAM_VALUE.MMCM_CLKOUT4_FREQ } {
+	# Procedure called to validate MMCM_CLKOUT4_FREQ
+	return true
 }
 
 proc update_PARAM_VALUE.ADDR_CMD_MODE { PARAM_VALUE.ADDR_CMD_MODE } {
@@ -863,6 +944,15 @@ proc validate_PARAM_VALUE.DQ_WIDTH { PARAM_VALUE.DQ_WIDTH } {
 	return true
 }
 
+proc update_PARAM_VALUE.DRAM_TYPE { PARAM_VALUE.DRAM_TYPE } {
+	# Procedure called to update DRAM_TYPE when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.DRAM_TYPE { PARAM_VALUE.DRAM_TYPE } {
+	# Procedure called to validate DRAM_TYPE
+	return true
+}
+
 proc update_PARAM_VALUE.DRAM_WIDTH { PARAM_VALUE.DRAM_WIDTH } {
 	# Procedure called to update DRAM_WIDTH when any of the dependent parameters in the arguments change
 }
@@ -1067,6 +1157,15 @@ proc update_PARAM_VALUE.MMCM_CLKOUT2_EN { PARAM_VALUE.MMCM_CLKOUT2_EN } {
 
 proc validate_PARAM_VALUE.MMCM_CLKOUT2_EN { PARAM_VALUE.MMCM_CLKOUT2_EN } {
 	# Procedure called to validate MMCM_CLKOUT2_EN
+	return true
+}
+
+proc update_PARAM_VALUE.MMCM_CLKOUT2_FREQ { PARAM_VALUE.MMCM_CLKOUT2_FREQ } {
+	# Procedure called to update MMCM_CLKOUT2_FREQ when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.MMCM_CLKOUT2_FREQ { PARAM_VALUE.MMCM_CLKOUT2_FREQ } {
+	# Procedure called to validate MMCM_CLKOUT2_FREQ
 	return true
 }
 
@@ -1400,15 +1499,6 @@ proc update_PARAM_VALUE.TEMP_MON_CONTROL { PARAM_VALUE.TEMP_MON_CONTROL } {
 
 proc validate_PARAM_VALUE.TEMP_MON_CONTROL { PARAM_VALUE.TEMP_MON_CONTROL } {
 	# Procedure called to validate TEMP_MON_CONTROL
-	return true
-}
-
-proc update_PARAM_VALUE.TEMP_MON_EN { PARAM_VALUE.TEMP_MON_EN } {
-	# Procedure called to update TEMP_MON_EN when any of the dependent parameters in the arguments change
-}
-
-proc validate_PARAM_VALUE.TEMP_MON_EN { PARAM_VALUE.TEMP_MON_EN } {
-	# Procedure called to validate TEMP_MON_EN
 	return true
 }
 
@@ -1927,56 +2017,6 @@ proc update_MODELPARAM_VALUE.MMCM_DIVCLK_DIVIDE { MODELPARAM_VALUE.MMCM_DIVCLK_D
 	set_property value [get_property value ${PARAM_VALUE.MMCM_DIVCLK_DIVIDE}] ${MODELPARAM_VALUE.MMCM_DIVCLK_DIVIDE}
 }
 
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT0_EN { MODELPARAM_VALUE.MMCM_CLKOUT0_EN PARAM_VALUE.MMCM_CLKOUT0_EN } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT0_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT0_EN}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT1_EN { MODELPARAM_VALUE.MMCM_CLKOUT1_EN PARAM_VALUE.MMCM_CLKOUT1_EN } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT1_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT1_EN}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT2_EN { MODELPARAM_VALUE.MMCM_CLKOUT2_EN PARAM_VALUE.MMCM_CLKOUT2_EN } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT2_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT2_EN}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT3_EN { MODELPARAM_VALUE.MMCM_CLKOUT3_EN PARAM_VALUE.MMCM_CLKOUT3_EN } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT3_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT3_EN}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT4_EN { MODELPARAM_VALUE.MMCM_CLKOUT4_EN PARAM_VALUE.MMCM_CLKOUT4_EN } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT4_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT4_EN}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE PARAM_VALUE.MMCM_CLKOUT0_DIVIDE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT0_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE PARAM_VALUE.MMCM_CLKOUT1_DIVIDE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT1_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE PARAM_VALUE.MMCM_CLKOUT2_DIVIDE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT2_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE PARAM_VALUE.MMCM_CLKOUT3_DIVIDE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT3_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE}
-}
-
-proc update_MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE PARAM_VALUE.MMCM_CLKOUT4_DIVIDE } {
-	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT4_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE}
-}
-
 proc update_MODELPARAM_VALUE.tCKE { MODELPARAM_VALUE.tCKE PARAM_VALUE.tCKE } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
 	set_property value [get_property value ${PARAM_VALUE.tCKE}] ${MODELPARAM_VALUE.tCKE}
@@ -2402,10 +2442,9 @@ proc update_MODELPARAM_VALUE.CMD_PIPE_PLUS1 { MODELPARAM_VALUE.CMD_PIPE_PLUS1 PA
 	set_property value [get_property value ${PARAM_VALUE.CMD_PIPE_PLUS1}] ${MODELPARAM_VALUE.CMD_PIPE_PLUS1}
 }
 
-proc update_MODELPARAM_VALUE.DRAM_TYPE { MODELPARAM_VALUE.DRAM_TYPE } {
+proc update_MODELPARAM_VALUE.DRAM_TYPE { MODELPARAM_VALUE.DRAM_TYPE PARAM_VALUE.DRAM_TYPE } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	# WARNING: There is no corresponding user parameter named "DRAM_TYPE". Setting updated value from the model parameter.
-set_property value DDR3 ${MODELPARAM_VALUE.DRAM_TYPE}
+	set_property value [get_property value ${PARAM_VALUE.DRAM_TYPE}] ${MODELPARAM_VALUE.DRAM_TYPE}
 }
 
 proc update_MODELPARAM_VALUE.CAL_WIDTH { MODELPARAM_VALUE.CAL_WIDTH PARAM_VALUE.CAL_WIDTH } {
@@ -2543,8 +2582,53 @@ proc update_MODELPARAM_VALUE.RST_ACT_LOW { MODELPARAM_VALUE.RST_ACT_LOW PARAM_VA
 	set_property value [get_property value ${PARAM_VALUE.RST_ACT_LOW}] ${MODELPARAM_VALUE.RST_ACT_LOW}
 }
 
-proc update_MODELPARAM_VALUE.TEMP_MON_EN { MODELPARAM_VALUE.TEMP_MON_EN PARAM_VALUE.TEMP_MON_EN } {
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT0_EN { MODELPARAM_VALUE.MMCM_CLKOUT0_EN PARAM_VALUE.MMCM_CLKOUT0_EN } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.TEMP_MON_EN}] ${MODELPARAM_VALUE.TEMP_MON_EN}
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT0_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT0_EN}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT1_EN { MODELPARAM_VALUE.MMCM_CLKOUT1_EN PARAM_VALUE.MMCM_CLKOUT1_EN } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT1_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT1_EN}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT2_EN { MODELPARAM_VALUE.MMCM_CLKOUT2_EN PARAM_VALUE.MMCM_CLKOUT2_EN } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT2_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT2_EN}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT3_EN { MODELPARAM_VALUE.MMCM_CLKOUT3_EN PARAM_VALUE.MMCM_CLKOUT3_EN } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT3_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT3_EN}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT4_EN { MODELPARAM_VALUE.MMCM_CLKOUT4_EN PARAM_VALUE.MMCM_CLKOUT4_EN } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT4_EN}] ${MODELPARAM_VALUE.MMCM_CLKOUT4_EN}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE PARAM_VALUE.MMCM_CLKOUT0_DIVIDE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT0_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT0_DIVIDE}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE PARAM_VALUE.MMCM_CLKOUT1_DIVIDE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT1_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT1_DIVIDE}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE PARAM_VALUE.MMCM_CLKOUT2_DIVIDE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT2_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT2_DIVIDE}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE PARAM_VALUE.MMCM_CLKOUT3_DIVIDE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT3_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT3_DIVIDE}
+}
+
+proc update_MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE { MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE PARAM_VALUE.MMCM_CLKOUT4_DIVIDE } {
+	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
+	set_property value [get_property value ${PARAM_VALUE.MMCM_CLKOUT4_DIVIDE}] ${MODELPARAM_VALUE.MMCM_CLKOUT4_DIVIDE}
 }
 

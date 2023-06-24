@@ -51,7 +51,7 @@
 // /___/  \  /    Vendor             : Xilinx
 // \   \   \/     Version            : 4.2
 //  \   \         Application        : MIG
-//  /   /         Filename           : design_1_mig_7series_0_0_mig.v
+//  /   /         Filename           : mb_preset_mig_7series_0_0_mig.v
 // /___/   /\     Date Last Modified : $Date: 2011/06/02 08:35:03 $
 // \   \  /  \    Date Created       : Tue Sept 21 2010
 //  \___\/\___\
@@ -72,7 +72,7 @@
 //`define SKIP_CALIB
 `timescale 1ps/1ps
 
-module design_1_mig_7series_0_0_mig #
+module mb_preset_mig_7series_0_0_mig #
   (
 
    //***************************************************************************
@@ -228,9 +228,9 @@ module design_1_mig_7series_0_0_mig #
    // The following parameters are multiplier and divisor factors for PLLE2.
    // Based on the selected design frequency these parameters vary.
    //***************************************************************************
-   parameter CLKIN_PERIOD          = 10000,
+   parameter CLKIN_PERIOD          = 5000,
                                      // Input Clock Period
-   parameter CLKFBOUT_MULT         = 8,
+   parameter CLKFBOUT_MULT         = 4,
                                      // write PLL VCO multiplier
    parameter DIVCLK_DIVIDE         = 1,
                                      // write PLL VCO divisor
@@ -265,7 +265,7 @@ module design_1_mig_7series_0_0_mig #
    parameter MMCM_CLKOUT4_EN       = "FALSE",
                                      // "TRUE" - MMCM output clock (CLKOUT4) is enabled
                                      // "FALSE" - MMCM output clock (CLKOUT4) is disabled
-   parameter MMCM_CLKOUT0_DIVIDE   = 4,
+   parameter MMCM_CLKOUT0_DIVIDE   = 24.0000038,
                                      // VCO output divisor for MMCM output clock (CLKOUT0)
    parameter MMCM_CLKOUT1_DIVIDE   = 1,
                                      // VCO output divisor for MMCM output clock (CLKOUT1)
@@ -440,18 +440,18 @@ module design_1_mig_7series_0_0_mig #
    parameter FINE_PER_BIT          = "OFF",
    parameter CENTER_COMP_MODE      = "OFF",
    parameter PI_VAL_ADJ            = "OFF",
-   parameter IODELAY_GRP0          = "DESIGN_1_MIG_7SERIES_0_0_IODELAY_MIG0",
+   parameter IODELAY_GRP0          = "MB_PRESET_MIG_7SERIES_0_0_IODELAY_MIG0",
                                      // It is associated to a set of IODELAYs with
                                      // an IDELAYCTRL that have same IODELAY CONTROLLER
                                      // clock frequency (200MHz).
-   parameter IODELAY_GRP1          = "DESIGN_1_MIG_7SERIES_0_0_IODELAY_MIG1",
+   parameter IODELAY_GRP1          = "MB_PRESET_MIG_7SERIES_0_0_IODELAY_MIG1",
                                      // It is associated to a set of IODELAYs with
                                      // an IDELAYCTRL that have same IODELAY CONTROLLER
                                      // clock frequency (300MHz/400MHz).
-   parameter SYSCLK_TYPE           = "SINGLE_ENDED",
+   parameter SYSCLK_TYPE           = "NO_BUFFER",
                                      // System clock type DIFFERENTIAL, SINGLE_ENDED,
                                      // NO_BUFFER
-   parameter REFCLK_TYPE           = "NO_BUFFER",
+   parameter REFCLK_TYPE           = "USE_SYSTEM_CLOCK",
                                      // Reference clock type DIFFERENTIAL, SINGLE_ENDED,
                                      // NO_BUFFER, USE_SYSTEM_CLOCK
    parameter SYS_RST_PORT          = "FALSE",
@@ -511,14 +511,14 @@ module design_1_mig_7series_0_0_mig #
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
-   parameter C_S_AXI_DATA_WIDTH            = 128,
+   parameter C_S_AXI_DATA_WIDTH            = 32,
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.
    parameter C_MC_nCK_PER_CLK              = 4,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
-   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 1,
+   parameter C_S_AXI_SUPPORTS_NARROW_BURST = 0,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
    parameter C_RD_WR_ARB_ALGORITHM          = "RD_PRI_REG",
@@ -623,8 +623,6 @@ module design_1_mig_7series_0_0_mig #
    // Single-ended system clock
    input                                        sys_clk_i,
    
-   // Single-ended iodelayctrl clk (reference clock)
-   input                                        clk_ref_i,
    
    // user interface signals
    output                                       ui_clk,
@@ -807,6 +805,7 @@ module design_1_mig_7series_0_0_mig #
   wire                              mmcm_clk;
   wire                              clk_ref_p;
   wire                              clk_ref_n;
+  wire                              clk_ref_i;
   wire [11:0]                       device_temp_s;
   wire [11:0]                       device_temp_i;
 
@@ -897,8 +896,7 @@ module design_1_mig_7series_0_0_mig #
   
   assign sys_clk_p = 1'b0;
   assign sys_clk_n = 1'b0;
-  assign clk_ref_p = 1'b0;
-  assign clk_ref_n = 1'b0;
+  assign clk_ref_i = 1'b0;
   assign device_temp = device_temp_s;
       
 
