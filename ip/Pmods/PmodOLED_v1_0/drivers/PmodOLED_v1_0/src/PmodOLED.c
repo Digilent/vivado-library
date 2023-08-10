@@ -22,8 +22,9 @@
 /*                          Removed MB_Sleep calls                            */
 /*    02/17/2018(atangzwj): Validated for Vivado 2017.4                       */
 /*    08/09/2023(MihaiR):   Updated OLED_SetGPIOTristateBits fValue parameter */
-/*							explanation and removed the XSpi_Stop command     */
-/*							from the OLED_End function
+/*                          explanation and moved the XSpi_Stop command from  */
+/*                          the OLED_End() function to OLED_HostTerm()        */
+/*                          function.                                         */
 /*                                                                            */
 /******************************************************************************/
 
