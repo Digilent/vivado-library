@@ -40,6 +40,11 @@
 /*                      as well as inverting the white and black        */
 /*  10/31/2017(ArtVVB): 2016.4 Maintenance, replaced OLED_Delay with    */
 /*                      usleep                                          */
+/*  08/09/2023(MihaiR): edited the init and term functions so they      */
+/* 						have the proper instructions for startup and    */
+/*						shut down, some of the functions had minor      */
+/*						changes such as changing the order in which     */
+/* 						their instructions were called					*/
 /************************************************************************/
 
 
@@ -66,7 +71,7 @@
 #define SetSegRemap            0xA0
 #define SetScanDirection       0xC0
 #define SetLowerColumnAddress  0xDA
-#define LowerColumnAddress     0x00
+#define LowerColumnAddress     0x02
 
 /* Setting pins based on DSPI_SS pin plus offset to get to lower 4 pins
 ** on pmod connector
@@ -121,14 +126,14 @@ void    OLED_PutBuffer  (PmodOLED *InstancePtr, int cb, uint8_t *rgbTx);
 void OLED_Init(PmodOLED *InstancePtr, u32 GPIO_Address, u32 SPI_Address, u8 orientation, u8 invert)
 {
 
-    /* Init the PIC32 peripherals used to talk to the display.
-    */
-    OLED_HostInit(InstancePtr, GPIO_Address, SPI_Address);
-
     /* Init the memory variables used to control access to the
     ** display.
     */
     OLED_DvrInit(InstancePtr);
+	
+	/* Init the PIC32 peripherals used to talk to the display.
+    */
+    OLED_HostInit(InstancePtr, GPIO_Address, SPI_Address);
 
     /* Init the OLED display hardware.
     */
@@ -192,12 +197,16 @@ void OLED_HostInit(PmodOLED *InstancePtr, u32 GPIO_Address, u32 SPI_Address)
 {
     InstancePtr->GPIO_addr=GPIO_Address;
     OLEDConfig.BaseAddress=SPI_Address;
-
+	
+	//All GPIO pins are set as outputs
+	OLED_SetGPIOTristateBits(InstancePtr, 0xF, 0b0);
+	//Set VBAT and VDD to high so they are not powering yet the OLED
+    OLED_SetGPIOBits(InstancePtr, VbatCtrl | VddCtrl, 0b1);
+	//Set Reset and DataCmd to low so the OLED is ready to execute the commands and is held in Reset
+	OLED_SetGPIOBits(InstancePtr, Reset | DataCmd, 0b0);
+	
     if (XST_SUCCESS != OLED_SPIInit(&InstancePtr->OLEDSpi))
         xil_printf("SPI Initialization failed\n\r");
-
-    OLED_SetGPIOTristateBits(InstancePtr, 0xF, 0b0);//0b1111 for input 0b0000 for output, 0b0001 for pin1 in pin 2 out etc.
-    OLED_SetGPIOBits(InstancePtr, 0xF, 0b1);
 }
 
 /* ------------------------------------------------------------ */
@@ -218,22 +227,25 @@ void OLED_HostInit(PmodOLED *InstancePtr, u32 GPIO_Address, u32 SPI_Address)
 
 void OLED_HostTerm(PmodOLED *InstancePtr)
     {
+	// Disable SPI interface, put SCLK, SDIN and CS into tristate
+	XSpi_Stop(&InstancePtr->OLEDSpi);
 
-    ///* Make the Data/Command select, Reset, and SPI CS pins be inputs.
+    ///* Make the Data/Command select and Reset pins be inputs.
     //*/
-
+	OLED_SetGPIOTristateBits(InstancePtr, DataCmd | Reset, 0b1);
     OLED_SetGPIOBits(InstancePtr, DataCmd | Reset, 0b1);
 
-    OLED_SetGPIOTristateBits(InstancePtr, DataCmd | Reset, 0b1);
+	/* Turn off VBAT and wait for 3.5 seconds
+    */
+    OLED_SetGPIOBits(InstancePtr, VbatCtrl, 0b1);
+    usleep(3500000);
 
-    ///* Make power control pins be inputs. The pullup resistors on the
-    //** board will ensure that the power supplies stay off.
-    //*/
-    OLED_SetGPIOBits(InstancePtr, VddCtrl | VbatCtrl, 0b1);
-
+    /* Turn off VDD
+    */
+    OLED_SetGPIOBits(InstancePtr, VddCtrl, 0b1);
+	
+	// Put VDD and VBAT in tristate
     OLED_SetGPIOTristateBits(InstancePtr, VddCtrl | VbatCtrl, 0b1);
-
-    XSpi_Stop(&InstancePtr->OLEDSpi);
 }
 
 /* ------------------------------------------------------------ */
@@ -305,26 +317,23 @@ void OLED_DvrInit(PmodOLED *InstancePtr)
 
 void OLED_DevInit(PmodOLED *InstancePtr, u8 orientation, u8 invert)
     {
-    /* We're going to be sending commands, so clear the Data/Cmd bit
+    /* Turn on the VDD and wait 1 ms for the power to go up
     */
-    OLED_SetGPIOBits(InstancePtr, DataCmd | VddCtrl, 0b0);
-
-
-    /* Start by turning VDD on and wait a while for the power to come up.
-    */
+    OLED_SetGPIOBits(InstancePtr, VddCtrl, 0b0);
     usleep(1000);
 
 
-    /* Display off command
+    /* Set Reset off for 1 ms, send the display off command and turn Reset on for 1ms then keep Reset off
     */
-    OLED_WriteByte(InstancePtr, cmdOledDisplayOff);
-
-    /* Bring Reset low and then high
-    */
-    OLED_SetGPIOBits(InstancePtr, Reset, 0b0);
-    usleep(1000);
     OLED_SetGPIOBits(InstancePtr, Reset, 0b1);
-
+    usleep(1000);
+	OLED_WriteByte(InstancePtr, cmdOledDisplayOff);
+    OLED_SetGPIOBits(InstancePtr, Reset, 0b0);
+	usleep(1000);
+	OLED_SetGPIOBits(InstancePtr, Reset, 0b1);
+	usleep(1000);
+	
+	
     /* Send the Set Charge Pump and Set Pre-Charge Period commands
     */
     OLED_WriteByte(InstancePtr, 0x8D);//From Univision data sheet, not in SSD1306 data sheet
@@ -332,11 +341,6 @@ void OLED_DevInit(PmodOLED *InstancePtr, u8 orientation, u8 invert)
 
     OLED_WriteByte(InstancePtr, 0xD9);//From Univision data sheet, not in SSD1306 data sheet
     OLED_WriteByte(InstancePtr, 0xF1);
-
-    /* Turn on VCC and wait 100ms
-    */
-    OLED_SetGPIOBits(InstancePtr, VbatCtrl, 0b0);
-    usleep(100000);
 
     // Send the commands to invert the display for onboard OLED or upside down for PmodOLED.
     // uncomment/comment the next 6 lines if you are using the PmodOLED right side up
@@ -371,8 +375,13 @@ void OLED_DevInit(PmodOLED *InstancePtr, u8 orientation, u8 invert)
     else
         OLED_WriteByte(InstancePtr, 0xA6);//invert black/white
 
+	/* Turn on VCC and wait 100ms
+    */
+    OLED_SetGPIOBits(InstancePtr, VbatCtrl, 0b0);
+    usleep(100000);
+	
     /* Send Display On command
-        */
+    */
     OLED_WriteByte(InstancePtr, cmdOledDisplayOn);
 }
 
@@ -394,19 +403,9 @@ void OLED_DevInit(PmodOLED *InstancePtr, u8 orientation, u8 invert)
 
 void OLED_DevTerm(PmodOLED *InstancePtr)
     {
-
     /* Send the Display Off command.
     */
     OLED_WriteByte(InstancePtr, cmdOledDisplayOff);
-
-    /* Turn off VCC
-    */
-    OLED_SetGPIOBits(InstancePtr, VddCtrl, 0b1);
-    usleep(100000);
-
-    /* Turn off VDD
-    */
-    OLED_SetGPIOBits(InstancePtr, VbatCtrl, 0b0);
 }
 
 /* ------------------------------------------------------------ */
