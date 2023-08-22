@@ -74,6 +74,10 @@ int main() {
    DemoRun();
    DemoCleanup();
 
+   // Microblaze applications can automatically reboot on exit. Prevent
+   // this by looping indefinitely, giving the user time to power off the board.
+   while (1);
+
    return 0;
 }
 
