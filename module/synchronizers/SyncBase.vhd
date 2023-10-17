@@ -48,7 +48,7 @@
 -- asserted independently.
 --
 -- Constraints:
--- # Replace <InstSyncBase> with path to SyncAsync instance, keep rest unchanged
+-- # Replace <InstSyncBase> with path to SyncBase instance, keep rest unchanged
 -- # Begin scope to SyncBase instance
 -- current_instance [get_cells <InstSyncBase>]
 -- # Input to synchronizer ignored for timing analysis
