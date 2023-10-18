@@ -1,6 +1,6 @@
 set instname [current_inst]
 set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list late] -force ConstrsZmodDigitizer.xdc]
-puts "Generating $f_xdc...."
+puts "Generating $f_xdc for $instname...."
 
 puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
 puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
@@ -124,12 +124,13 @@ puts_ipfile $f_xdc {# computed will be different i.e. $tDCO_half will need to be
 puts_ipfile $f_xdc {# all constraint values.}
 puts_ipfile $f_xdc {# ======================}
 for {set index 0} {$index < $data_bus_width} {incr index} {
-	set constr_block {set_input_delay -clock [get_clocks DcoClkIn] -clock_fall -min [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
-set_input_delay -clock [get_clocks DcoClkIn] -clock_fall -max [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
-set_input_delay -clock [get_clocks DcoClkIn] -min -add_delay [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
-set_input_delay -clock [get_clocks DcoClkIn] -max -add_delay [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
+	set constr_block {set_input_delay -clock [get_clocks nameDcoClkIn] -clock_fall -min [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -clock_fall -max [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -min -add_delay [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -max -add_delay [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodADC_Data[<index>]} -prop_thru_buffers]
 	}
 	
+	set constr_block [string map "nameDcoClkIn ${instname}_DcoClkIn" $constr_block]
 	set constr_block [string map "<index> $index" $constr_block]
 	puts_ipfile $f_xdc $constr_block
 } 

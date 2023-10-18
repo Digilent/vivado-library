@@ -379,7 +379,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>367645c1</spirit:value>
+            <spirit:value>cbfa8156</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -407,7 +407,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bb7d32cf</spirit:value>
+            <spirit:value>9e3dadfc</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1307,19 +1307,19 @@
     <spirit:fileSet>
       <spirit:name>xilinx_implementation_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>src/generate_timing_xdc.xit</spirit:name>
-        <spirit:userFileType>xit</spirit:userFileType>
-        <spirit:define>
-          <spirit:name>processing_order</spirit:name>
-          <spirit:value>late</spirit:value>
-        </spirit:define>
-      </spirit:file>
-      <spirit:file>
         <spirit:name>src/generate_clocks.xit</spirit:name>
         <spirit:userFileType>xit</spirit:userFileType>
         <spirit:define>
           <spirit:name>processing_order</spirit:name>
           <spirit:value>early</spirit:value>
+        </spirit:define>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/generate_timing_xdc.xit</spirit:name>
+        <spirit:userFileType>xit</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>late</spirit:value>
         </spirit:define>
       </spirit:file>
     </spirit:fileSet>
@@ -1459,11 +1459,11 @@
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Digilent</xilinx:vendorDisplayName>
       <xilinx:vendorURL>https://www.digilent.com</xilinx:vendorURL>
-      <xilinx:coreRevision>3</xilinx:coreRevision>
+      <xilinx:coreRevision>4</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>xilinx.com:user:ZmodDigitizerController:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2023-03-08T13:25:18Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2023-10-17T13:53:03Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.df@7b2ddaf7_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@39d996ea_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
@@ -5468,9 +5468,9 @@
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2023.1.2</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="b2b6f517"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="cfd810da"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="b30d7e26"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="40408c1d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="906686da"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="df9264d9"/>
