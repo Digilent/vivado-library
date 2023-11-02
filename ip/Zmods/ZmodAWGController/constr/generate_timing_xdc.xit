@@ -1,6 +1,6 @@
 set instname [current_inst]
 set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list late] -force ConstrsZmodDAC.xdc]
-puts "Generating $f_xdc...."
+puts "Generating $f_xdc for $instname...."
 
 puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
 puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
@@ -29,8 +29,10 @@ puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstDacSampli
 puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstDacClkReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacClkReset*SyncAsync*/oSyncStages*/CLR} -hier]}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {create_generated_clock -name ZmodDAC_ClkIO -source [get_pins InstDAC_ClkIO_ODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIO]}
-puts_ipfile $f_xdc {create_generated_clock -name ZmodDAC_ClkIn -source [get_pins InstDAC_ClkinODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIn]}
+set constr {create_generated_clock -name nameZmodDAC_ClkIO -source [get_pins InstDAC_ClkIO_ODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIO]}
+puts_ipfile $f_xdc [string map "nameZmodDAC_ClkIO ${instname}_ZmodDAC_ClkIO" $constr]
+set constr {create_generated_clock -name nameZmodDAC_ClkIn -source [get_pins InstDAC_ClkinODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIn]}
+puts_ipfile $f_xdc [string map "nameZmodDAC_ClkIn ${instname}_ZmodDAC_ClkIn" $constr]
 puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {#Specify timing parameters for AD9717}
@@ -42,9 +44,9 @@ puts_ipfile $f_xdc {#Length matching tolerance is 1mm on Eclypse Z7 + 0.1mm on Z
 puts_ipfile $f_xdc {set t_length_matching_err 0.008;}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks ZmodDAC_ClkIO] -clock_fall -min -add_delay [expr $t_hold_falling - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks ZmodDAC_ClkIO] -clock_fall -max -add_delay [expr $t_setup_falling + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks ZmodDAC_ClkIO] -min -add_delay [expr $t_hold_rising - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks ZmodDAC_ClkIO] -max -add_delay [expr $t_setup_rising + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
+puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -min -add_delay [expr $t_hold_falling - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
+puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -max -add_delay [expr $t_setup_falling + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
+puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -min -add_delay [expr $t_hold_rising - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
+puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -max -add_delay [expr $t_setup_rising + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
 
 close_ipfile $f_xdc
