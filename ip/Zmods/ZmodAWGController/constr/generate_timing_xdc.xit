@@ -44,9 +44,16 @@ puts_ipfile $f_xdc {#Length matching tolerance is 1mm on Eclypse Z7 + 0.1mm on Z
 puts_ipfile $f_xdc {set t_length_matching_err 0.008;}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -min -add_delay [expr $t_hold_falling - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -max -add_delay [expr $t_setup_falling + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -min -add_delay [expr $t_hold_rising - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
-puts_ipfile $f_xdc {set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -max -add_delay [expr $t_setup_rising + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]}
+set constr_block {
+	set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -min -add_delay [expr $t_hold_falling - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]
+	set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -clock_fall -max -add_delay [expr $t_setup_falling + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]
+	set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -min -add_delay [expr $t_hold_rising - $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]
+	set_output_delay -clock [get_clocks nameZmodDAC_ClkIO] -max -add_delay [expr $t_setup_rising + $t_length_matching_err] [get_ports {dZmodDAC_Data[*]} -prop_thru_buffers]
+}
+	
+set constr_block [string map "nameZmodDAC_ClkIO ${instname}_ZmodDAC_ClkIO" $constr_block]
+puts_ipfile $f_xdc $constr_block
+
+puts_ipfile $f_xdc {}
 
 close_ipfile $f_xdc
