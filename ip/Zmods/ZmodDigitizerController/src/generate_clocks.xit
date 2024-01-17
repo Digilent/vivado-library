@@ -10,8 +10,5 @@ puts_ipfile $f_xdc [string map "nameDcoClkIn ${instname}_DcoClkIn" $constr]
 set constr {create_generated_clock -name nameCG_InputClk -source [get_pins InstCG_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ClockGenPriRefClk]] -divide_by 1 [get_ports CG_InputClk_p]}
 puts_ipfile $f_xdc [string map "nameCG_InputClk ${instname}_CG_InputClk" $constr]
 puts_ipfile $f_xdc {}
-#set constr {set_clock_groups -asynchronous -group [get_clocks -include_generated_clocks {nameDcoClkIn}] -group [get_clocks -include_generated_clocks {SysClk100 ClockGenPriRefClk nameCG_InputClk}]}
-#puts_ipfile $f_xdc [string map "nameDcoClkIn ${instname}_DcoClkIn nameCG_InputClk ${instname}_CG_InputClk" $constr]
-puts_ipfile $f_xdc {}
 
 close_ipfile $f_xdc
