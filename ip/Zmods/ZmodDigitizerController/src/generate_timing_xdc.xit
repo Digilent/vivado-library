@@ -14,19 +14,18 @@ puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_Loc
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *TWI_Ctl_Reset_Synchro*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *TWI_Ctl_Reset_Synchro*/oSyncStages_reg[1]/D} -hier] 5.0}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncReset*/oSyncStages_reg[1]/D} -hier] 5.0}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerSysReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerSysReset*/oSyncStages_reg[1]/D} -hier] 5.0}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-#puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
-
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerHandshake*SyncAsyncPushT/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerSamplingReset*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDigitizerTestModeSync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
 puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Disable timing analysis on ResetBridge components' asynchronous reset input.}
@@ -50,7 +49,8 @@ puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for Handshak
 puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Set Maximum Delay on the data path between clock domains to 2 output clock cycles, for the HandshakeBase components}
-puts_ipfile $f_xdc {set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *InstDigitizerHandshake*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstDigitizerHandshake*/oData_reg[*]}] [expr {$tDCO*2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDigitizerHandshake*/oData_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *InstDigitizerHandshake*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstDigitizerHandshake*/oData_reg[*]}] [expr {$ClkPeriod*2}]}
 puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstCG_ClkODDR primitive; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
