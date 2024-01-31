@@ -1,0 +1,4 @@
+# This file is automatically written.  Do not modify.
+proc gen_USERPARAMETER_kADC_Width_VALUE {kZmodID } {expr $kZmodID == 0 ? 14 : $kZmodID == 1 ? 10 : $kZmodID == 2 ? 10 : $kZmodID == 3 ? 12 : $kZmodID == 4 ? 12 : $kZmodID == 5 ? 14 : $kZmodID == 6 ? 14 : 14}
+proc gen_USERPARAMETER_kRefSel_ENABLEMENT {kCGI2C_Addr } {expr "$kCGI2C_Addr" == 0xd0 ? true : "$kCGI2C_Addr" == 0xd2 ? true : false}
+proc gen_USERPARAMETER_kHwSwCtrlSel_ENABLEMENT {kCGI2C_Addr } {expr "$kCGI2C_Addr" == 0xd0 ? true : "$kCGI2C_Addr" == 0xd2 ? true : false}

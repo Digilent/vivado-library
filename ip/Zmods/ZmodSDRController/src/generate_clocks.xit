@@ -1,0 +1,14 @@
+set instname [current_inst]
+set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list early] -force ConstrsZmodSDRClocks.xdc]
+puts "Generating $f_xdc for $instname...."
+
+puts_ipfile $f_xdc {# DCO Clock period}
+puts_ipfile $f_xdc {set tDCO [get_property CLKIN1_PERIOD [get_cells InstDataPath/InstMMCM_SDR]];}
+puts_ipfile $f_xdc {set tDCO_half [expr $tDCO/2];}
+set constr {create_clock -period $tDCO -name nameDcoClkIn -waveform "0.000 $tDCO_half" [get_ports DcoClkIn -prop_thru_buffers]}
+puts_ipfile $f_xdc [string map "nameDcoClkIn ${instname}_DcoClkIn" $constr]
+set constr {create_generated_clock -name nameCG_InputClk -source [get_pins InstCG_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ClockGenPriRefClk]] -divide_by 1 [get_ports CG_InputClk_p]}
+puts_ipfile $f_xdc [string map "nameCG_InputClk ${instname}_CG_InputClk" $constr]
+puts_ipfile $f_xdc {}
+
+close_ipfile $f_xdc

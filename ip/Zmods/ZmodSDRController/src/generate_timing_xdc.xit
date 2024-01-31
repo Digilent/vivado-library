@@ -1,0 +1,138 @@
+set instname [current_inst]
+set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list late] -force ConstrsZmodSDR.xdc]
+puts "Generating $f_xdc for $instname...."
+
+puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
+puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
+puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *InstMMCM_LockRefClkSync*/oSyncStages_reg[0]/D} -hier]}
+puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *Synchro_CDCE_PLL*/oSyncStages_reg[0]/D} -hier]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# Overconstrain the metastable paths in the double synchronizer output clock domain to 1/2 of the period, to leave enough margin for metastability to settle}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncAsyncPushTBack*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncAsyncPushTBack*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *Synchro_CDCE_PLL*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *Synchro_CDCE_PLL*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_LockRefClkSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstMMCM_LockRefClkSync*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *TWI_Ctl_Reset_Synchro*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *TWI_Ctl_Reset_Synchro*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncReset*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_SysReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_SysReset*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncAsyncPushT/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSDR_SamplingReset*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_SamplingReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_SamplingReset*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSDR_TestModeSync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSDR_TestModeSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSDR_TestModeSync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on ResetBridge components' asynchronous reset input.}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *TWI_Ctl_Reset_Synchro*SyncAsync*/oSyncStages*/PRE || NAME =~ *TWI_Ctl_Reset_Synchro*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstSDR_Handshake*SyncReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstSDR_Handshake*SyncReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstSDR_SysReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstSDR_SysReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstSDR_SamplingReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstSDR_SamplingReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstClockGenPriRefClkReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstClockGenPriRefClkReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncBase component; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+#puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSDR_TestModeSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstSDR_TestModeSync*SyncAsync*/oSyncStages*/CLR} -hier]}
+#puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstMMCM_LockDcoBufgClkSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstMMCM_LockDcoBufgClkSync*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncAsync components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+#puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *Synchro_CDCE_PLL*/oSyncStages*/PRE || NAME =~ *Synchro_CDCE_PLL*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for HandshakeData components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+#puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSDR_Handshake*/oSyncStages*/PRE || NAME =~ *InstSDR_Handshake*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Set Maximum Delay on the data path between clock domains to 2 output clock cycles, for the HandshakeBase components}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSDR_Handshake*/oData_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *InstSDR_Handshake*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstSDR_Handshake*/oData_reg[*]}] [expr {$ClkPeriod*2}]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstCG_ClkODDR primitive; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+#puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstClockGenPriRefClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstCG_ClkODDR*/R}]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {#}
+
+puts_ipfile $f_xdc {# Specify timing parameters for AD9648 in CMOS mode}
+set freq_preset [get_property PARAM_VALUE.kCDCEFreqSel]
+puts "frequency preset: $freq_preset"
+if { $freq_preset > 3 || $freq_preset == 0} {
+	puts_ipfile $f_xdc {# Since the AD9648 DCO to Data Skew parameter is specified for the full operating}
+	puts_ipfile $f_xdc {# temperature range (−40°C to +85°C ambient) and the Zmod SDR works in a much narrower}
+	puts_ipfile $f_xdc {# temperature range, the values below should work fine.}
+    puts_ipfile $f_xdc {set tskew_max 0.600;}
+    puts_ipfile $f_xdc {set tskew_min -0.720;}
+} else {
+    puts_ipfile $f_xdc {set tskew_max 1.000;}
+    puts_ipfile $f_xdc {set tskew_min -1.200;}
+}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {#Reg 0x17 setting} 
+puts_ipfile $f_xdc {set OutputDelay  1.12;}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# Zmod SDR Net Delays}
+puts_ipfile $f_xdc {set net_delay_dcoclk 0.169;}
+puts_ipfile $f_xdc {set net_delay_d0 0.166;}
+puts_ipfile $f_xdc {set net_delay_d1 0.166;}
+puts_ipfile $f_xdc {set net_delay_d2 0.167;}
+puts_ipfile $f_xdc {set net_delay_d3 0.167;}
+puts_ipfile $f_xdc {set net_delay_d4 0.166;}
+puts_ipfile $f_xdc {set net_delay_d5 0.167;}
+puts_ipfile $f_xdc {set net_delay_d6 0.167;}
+puts_ipfile $f_xdc {set net_delay_d7 0.166;}
+puts_ipfile $f_xdc {set net_delay_d8 0.166;}
+puts_ipfile $f_xdc {set net_delay_d9 0.165;}
+puts_ipfile $f_xdc {set net_delay_d10 0.169;}
+puts_ipfile $f_xdc {set net_delay_d11 0.168;}
+puts_ipfile $f_xdc {set net_delay_d12 0.168;}
+puts_ipfile $f_xdc {set net_delay_d13 0.168;}
+puts_ipfile $f_xdc {# Maximum net skew on Eclypse Z7 is 1mm; @ 140mm / 1ns this means ~7ps}
+puts_ipfile $f_xdc {set net_skew_ecl 0.007}
+puts_ipfile $f_xdc {}
+
+# Only generate constraints for 
+set data_bus_width [get_property PARAM_VALUE.kADC_Width]
+puts "  data_bus_width: $data_bus_width"
+
+puts_ipfile $f_xdc {# The constraints below were written based on the Vivado 2021.1}
+puts_ipfile $f_xdc {# Language Template for input delay constraints, for a}
+puts_ipfile $f_xdc {# source-synchronous, edge-aligned double data rate interface }
+puts_ipfile $f_xdc {# (Clock with MMCM) and applying it to the ADC interface.}
+puts_ipfile $f_xdc {# Also, the MMCM clock output phase was adjusted to 120...127.5deg}
+puts_ipfile $f_xdc {# (depending on sampling period) to split the negative slack between}
+puts_ipfile $f_xdc {# setup and hold and to further optimize timing (see DataPath.vhd and}
+puts_ipfile $f_xdc {# PkgZmodDigitizer.vhd for more details).}
+puts_ipfile $f_xdc {# ===== IMPORTANT! =====}
+puts_ipfile $f_xdc {# In case of migration to the Ultrascale+ architecture is necessary, care}
+puts_ipfile $f_xdc {# must be taken since on that architecture, the MMCM}
+puts_ipfile $f_xdc {# "PHASESHIFT_MODE" property is by default set to LATENCY instead of}
+puts_ipfile $f_xdc {# WAVEFORM. This property change modifies the destination clock}
+puts_ipfile $f_xdc {# waveform in the timing analysis i.e. it changes the destination}
+puts_ipfile $f_xdc {# clock edge on which timing analysis is performed. The result is}
+puts_ipfile $f_xdc {# that timing analysis will be performed between incorrect edges,}
+puts_ipfile $f_xdc {# thus failing timing.}
+puts_ipfile $f_xdc {# For the Ultrascale+ architecture, the solution would be to change the}
+puts_ipfile $f_xdc {# constraints template to source-synchronous, CENTER-aligned double}
+puts_ipfile $f_xdc {# data rate interface. As a result, the way the constraint values are}
+puts_ipfile $f_xdc {# computed will be different i.e. $tDCO_half will need to be added to}
+puts_ipfile $f_xdc {# all constraint values.}
+puts_ipfile $f_xdc {# ======================}
+for {set index 0} {$index < $data_bus_width} {incr index} {
+	set constr_block {set_input_delay -clock [get_clocks nameDcoClkIn] -clock_fall -min [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodSDR_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -clock_fall -max [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodSDR_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -min -add_delay [expr $tskew_min + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk - $net_skew_ecl] [get_ports {diZmodSDR_Data[<index>]} -prop_thru_buffers]
+set_input_delay -clock [get_clocks nameDcoClkIn] -max -add_delay [expr $tskew_max + $net_delay_d<index> - $OutputDelay - $net_delay_dcoclk + $net_skew_ecl] [get_ports {diZmodSDR_Data[<index>]} -prop_thru_buffers]
+	}
+	
+	set constr_block [string map "nameDcoClkIn ${instname}_DcoClkIn" $constr_block]
+	set constr_block [string map "<index> $index" $constr_block]
+	puts_ipfile $f_xdc $constr_block
+} 
+
+close_ipfile $f_xdc
