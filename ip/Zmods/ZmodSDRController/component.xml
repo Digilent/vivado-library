@@ -389,7 +389,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>07585d0e</spirit:value>
+            <spirit:value>76414183</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -417,7 +417,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>d6a6b079</spirit:value>
+            <spirit:value>3eb517b4</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1033,13 +1033,13 @@
       <spirit:enumeration spirit:text="125 MHz">6</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
-      <spirit:name>choice_pairs_7f9b1619</spirit:name>
-      <spirit:enumeration spirit:text="ZmodSDR 1530-122">6</spirit:enumeration>
-    </spirit:choice>
-    <spirit:choice>
       <spirit:name>choice_pairs_aa084e91</spirit:name>
       <spirit:enumeration spirit:text="SECREF(XTAL)">0</spirit:enumeration>
       <spirit:enumeration spirit:text="PRIREF(FPGA)">1</spirit:enumeration>
+    </spirit:choice>
+    <spirit:choice>
+      <spirit:name>choice_pairs_ae8f0bdd</spirit:name>
+      <spirit:enumeration spirit:text="ZmodSDR 1450-122">6</spirit:enumeration>
     </spirit:choice>
     <spirit:choice>
       <spirit:name>choice_pairs_ca5276ad</spirit:name>
@@ -1201,7 +1201,7 @@
       <spirit:file>
         <spirit:name>xgui/ZmodSDRController_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_07585d0e</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_76414183</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1252,7 +1252,7 @@
     <spirit:parameter>
       <spirit:name>kZmodID</spirit:name>
       <spirit:displayName>ZmodID</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.kZmodID" spirit:choiceRef="choice_pairs_7f9b1619">6</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.kZmodID" spirit:choiceRef="choice_pairs_ae8f0bdd">6</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>kADC_ClkDiv</spirit:name>
@@ -1351,8 +1351,8 @@
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
       <xilinx:vendorDisplayName>Digilent</xilinx:vendorDisplayName>
       <xilinx:vendorURL>https://www.digilent.com</xilinx:vendorURL>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2024-01-31T12:58:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2024-05-14T13:01:36Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.df@7b2ddaf7_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@39d996ea_ARCHIVE_LOCATION">d:/Digilent/ZmodDigitizer</xilinx:tag>
@@ -5419,12 +5419,12 @@
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2022.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="63705488"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="e8385f5a"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="03aeec08"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="ced54560"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="0034cd7e"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="adfa1394"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="3ae99621"/>
       <xilinx:targetDRCs>
         <xilinx:targetDRC xilinx:tool="ipi">
           <xilinx:targetDRCOption xilinx:name="ignore_freq_hz" xilinx:value="true"/>
