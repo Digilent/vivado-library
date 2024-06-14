@@ -102,7 +102,7 @@ FIFO_WrA: process (PixelClk)
 begin
    if Rising_Edge(PixelClk) then
       if (pAllVld = '1') then
-         pWrA <= pWrA + 1;
+         pWrA <= (pWrA + 1) mod kFIFO_Depth;
       else -- when invalid data, go back to the beginning
          pWrA <= 0;
       end if;
@@ -115,7 +115,7 @@ begin
       if (pAllVld = '0') then
          pRdA <= 0;
       elsif (pRdEn = '1') then
-         pRdA <= pRdA + 1;
+         pRdA <= (pRdA + 1) mod kFIFO_Depth;
       end if;   
    end if;
 end process FIFO_RdA;
