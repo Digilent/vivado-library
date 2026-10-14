@@ -1,4 +1,3 @@
-
 package require xilinx::board 1.0
 namespace import ::xilinx::board::*
 
@@ -44,5 +43,3 @@ proc validate_PARAM_VALUE.C_AXI_LITE_SPI_HIGHADDR { PARAM_VALUE.C_AXI_LITE_SPI_H
 	# Procedure called to validate C_AXI_LITE_SPI_HIGHADDR
 	return true
 }
-
-

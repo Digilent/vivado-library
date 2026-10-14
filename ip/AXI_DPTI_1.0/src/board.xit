@@ -1,0 +1,24 @@
+package require xilinx::board 1.0
+namespace import ::xilinx::board::*
+set instname [current_inst]
+set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -force ${instname}_board.xdc]
+puts_ipfile $f_xdc "#--------------------Physical Constraints-----------------\n"
+if {[get_project_property BOARD] == "" } {
+    close_ipfile $f_xdc
+    return 
+}
+
+set board_if [get_property PARAM_VALUE.M_DPTI_BOARD_INTERFACE]
+if { $board_if ne "Custom"} {
+     board_add_port_constraints $f_xdc $board_if data    prog_d
+     board_add_port_constraints $f_xdc $board_if clko    prog_clko
+     board_add_port_constraints $f_xdc $board_if rxen    prog_rxen  
+     board_add_port_constraints $f_xdc $board_if txen    prog_txen
+     board_add_port_constraints $f_xdc $board_if oen     prog_oen        
+     board_add_port_constraints $f_xdc $board_if spien   prog_spien
+     board_add_port_constraints $f_xdc $board_if siwun   prog_siwun
+     board_add_port_constraints $f_xdc $board_if rdn     prog_rdn 
+     board_add_port_constraints $f_xdc $board_if wrn     prog_wrn 
+     puts_ipfile $f_xdc "#--------------------Physical Constraints-----------------\n"
+     close_ipfile $f_xdc
+}

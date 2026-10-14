@@ -43,8 +43,8 @@
 -------------------------------------------------------------------------------
 
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -55,51 +55,54 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity rgb2vga is
-   Generic (
-      VID_IN_DATA_WIDTH : natural := 24;
-      kRedDepth : natural := 5;
-      kGreenDepth : natural := 6;
-      kBlueDepth : natural := 5
-   );
-   Port (
-      rgb_pData : in std_logic_vector(VID_IN_DATA_WIDTH-1 downto 0);
-      rgb_pVDE : in std_logic;
-      rgb_pHSync : in std_logic;
-      rgb_pVSync : in std_logic;
-      
-      PixelClk : in std_logic; --pixel clock
-      
-      vga_pRed : out std_logic_vector(kRedDepth-1 downto 0);
-      vga_pGreen : out std_logic_vector(kGreenDepth-1 downto 0);
-      vga_pBlue : out std_logic_vector(kBlueDepth-1 downto 0);
-      vga_pHSync : out std_logic;
-      vga_pVSync : out std_logic
-   );
-end rgb2vga;
+ENTITY RGB2VGA IS
+  GENERIC (
+    VID_IN_DATA_WIDTH : NATURAL := 24;
+    KREDDEPTH         : NATURAL := 4;
+    KGREENDEPTH       : NATURAL := 4;
+    KBLUEDEPTH        : NATURAL := 4
+    );
+  PORT (
+    RGB_pData  : IN STD_LOGIC_VECTOR(VID_IN_DATA_WIDTH-1 DOWNTO 0);
+    RGB_pVDE   : IN STD_LOGIC;
+    RGB_pHSync : IN STD_LOGIC;
+    RGB_pVSync : IN STD_LOGIC;
 
-architecture Behavioral of rgb2vga is
-signal int_pData : std_logic_vector(VID_IN_DATA_WIDTH-1 downto 0);
+    PixelClk       : IN  STD_LOGIC;     --pixel clock
+    resetn         : IN  std_logic;
+    --VGA_OUT_clk : OUT std_logic;
+    -- VGA_OUT_de  : OUT std_logic;
+    VGA_OUT_RED   : OUT STD_LOGIC_VECTOR(KREDDEPTH-1 DOWNTO 0);
+    VGA_OUT_GREEN : OUT STD_LOGIC_VECTOR(KGREENDEPTH-1 DOWNTO 0);
+    VGA_OUT_BLUE  : OUT STD_LOGIC_VECTOR(KBLUEDEPTH-1 DOWNTO 0);
+    VGA_OUT_HSYNC : OUT STD_LOGIC;
+    VGA_OUT_VSYNC : OUT STD_LOGIC
+    );
+END RGB2VGA;
 
-begin
+ARCHITECTURE Behavioral OF RGB2VGA IS
+  SIGNAL int_pData : STD_LOGIC_VECTOR(VID_IN_DATA_WIDTH-1 DOWNTO 0);
 
-Blanking: process(PixelClk)
-begin
-   if Rising_Edge(PixelClk) then
-      if (rgb_pVDE = '1') then
-         int_pData <= rgb_pData;
-      else
-         int_pData <= (others => '0');
-      end if;
-      
-      vga_pHSync <= rgb_pHSync;
-      vga_pVSync <= rgb_pVSync;
-   end if;
-end process Blanking;
+BEGIN
 
-vga_pRed <= int_pData(VID_IN_DATA_WIDTH-1 downto VID_IN_DATA_WIDTH - kRedDepth);
-vga_pBlue <= int_pData(VID_IN_DATA_WIDTH/3*2-1 downto VID_IN_DATA_WIDTH/3*2 - kBlueDepth);
-vga_pGreen <= int_pData(VID_IN_DATA_WIDTH/3-1 downto VID_IN_DATA_WIDTH/3 - kGreenDepth); 
+  Blanking : PROCESS(PixelClk, resetn)
+  BEGIN
+    if (resetn = '1') then
+    IF Rising_Edge(PixelClk) THEN
+        IF (RGB_pVDE = '1') THEN
+            int_pData <= RGB_pData;
+        ELSE
+            int_pData <= (OTHERS => '0');
+    END IF;
+        VGA_OUT_HSYNC <= RGB_pHSync;
+        VGA_OUT_VSYNC <= RGB_pVSync;
+    END IF;
+    else
+        int_pData <= (OTHERS => '0');
+        end if;
+  END PROCESS Blanking;
 
-
-end Behavioral;
+  VGA_OUT_RED   <= int_pData(VID_IN_DATA_WIDTH-1 DOWNTO VID_IN_DATA_WIDTH - KREDDEPTH);
+  VGA_OUT_BLUE  <= int_pData(VID_IN_DATA_WIDTH/3*2-1 DOWNTO VID_IN_DATA_WIDTH/3*2 - KBLUEDEPTH);
+  VGA_OUT_GREEN <= int_pData(VID_IN_DATA_WIDTH/3-1 DOWNTO VID_IN_DATA_WIDTH/3 - KGREENDEPTH);
+END Behavioral;

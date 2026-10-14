@@ -1,168 +1,870 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<spirit:design xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <spirit:vendor>xilinx.com</spirit:vendor>
-  <spirit:library>xci</spirit:library>
-  <spirit:name>unknown</spirit:name>
-  <spirit:version>1.0</spirit:version>
-  <spirit:componentInstances>
-    <spirit:componentInstance>
-      <spirit:instanceName>PmodSD_axi_quad_spi_0_0</spirit:instanceName>
-      <spirit:componentRef spirit:vendor="xilinx.com" spirit:library="ip" spirit:name="axi_quad_spi" spirit:version="3.2"/>
-      <spirit:configurableElementValues>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.ADDR_WIDTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.ARUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.AWUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.BUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.CLK_DOMAIN"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.DATA_WIDTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.FREQ_HZ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_BRESP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_BURST">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_CACHE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_LOCK">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_PROT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_QOS">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_REGION">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_RRESP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.HAS_WSTRB">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.ID_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.MAX_BURST_LENGTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.NUM_READ_OUTSTANDING">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.NUM_READ_THREADS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.NUM_WRITE_OUTSTANDING">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.NUM_WRITE_THREADS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.PHASE">0.000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.PROTOCOL">AXI4LITE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.READ_WRITE_MODE">READ_WRITE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.RUSER_BITS_PER_BYTE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.RUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.SUPPORTS_NARROW_BURST">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.WUSER_BITS_PER_BYTE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_FULL.WUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.ADDR_WIDTH">7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.ARUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.AWUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.BUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.CLK_DOMAIN"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.DATA_WIDTH">32</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.FREQ_HZ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_BRESP">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_BURST">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_CACHE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_LOCK">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_PROT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_QOS">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_REGION">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_RRESP">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.HAS_WSTRB">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.ID_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.MAX_BURST_LENGTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.NUM_READ_OUTSTANDING">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.NUM_READ_THREADS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.NUM_WRITE_OUTSTANDING">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.NUM_WRITE_THREADS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.PHASE">0.000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.PROTOCOL">AXI4LITE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.READ_WRITE_MODE">READ_WRITE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.RUSER_BITS_PER_BYTE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.RUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.SUPPORTS_NARROW_BURST">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.WUSER_BITS_PER_BYTE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.AXI_LITE.WUSER_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.FULL_CLK.CLK_DOMAIN"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.FULL_CLK.FREQ_HZ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.FULL_CLK.PHASE">0.000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.INTERRUPT.PortWidth">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.LITE_CLK.CLK_DOMAIN"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.LITE_CLK.FREQ_HZ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.LITE_CLK.PHASE">0.000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.SPI_CLK.ASSOCIATED_RESET"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.SPI_CLK.CLK_DOMAIN"/>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.SPI_CLK.FREQ_HZ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="BUSIFPARAM_VALUE.SPI_CLK.PHASE">0.000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.Async_Clk">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_DUAL_QUAD_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_FAMILY">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_FIFO_DEPTH">16</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_INSTANCE">axi_quad_spi_inst</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_LSB_STUP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NUM_SS_BITS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_NUM_TRANSFER_BITS">8</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SCK_RATIO">8</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SELECT_XPM">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SHARED_STARTUP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SPI_MEMORY">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SPI_MEM_ADDR_BITS">24</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SPI_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_SUB_FAMILY">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_S_AXI4_BASEADDR">0xFFFFFFFF</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_S_AXI4_HIGHADDR">0x00000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_S_AXI4_ID_WIDTH">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TYPE_OF_AXI4_INTERFACE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_UC_FAMILY">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_USE_STARTUP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_USE_STARTUP_EXT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_XIP_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Async_Clk">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_DUAL_QUAD_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_FAMILY">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_FIFO_DEPTH">16</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_INSTANCE">axi_quad_spi_inst</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_NUM_SS_BITS">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_NUM_TRANSFER_BITS">8</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SCK_RATIO">8</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SCK_RATIO1">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SELECT_XPM">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SHARED_STARTUP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SPI_MEMORY">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SPI_MEM_ADDR_BITS">24</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SPI_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_SUB_FAMILY">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_S_AXI4_BASEADDR">0xFFFFFFFF</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_S_AXI4_HIGHADDR">0x00000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_S_AXI4_ID_WIDTH">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TYPE_OF_AXI4_INTERFACE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_USE_STARTUP">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_USE_STARTUP_INT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_XIP_MODE">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Component_Name">PmodSD_axi_quad_spi_0_0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.FIFO_INCLUDED">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Master_mode">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Multiples16">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.QSPI_BOARD_INTERFACE">Custom</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.UC_FAMILY">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.USE_BOARD_FLOW">false</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.ARCHITECTURE">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.BOARD">digilentinc.com:arty:part0:1.1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.DEVICE">xc7a35ti</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PACKAGE">csg324</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PREFHDL">VERILOG</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SILICON_REVISION"/>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SIMULATOR_LANGUAGE">MIXED</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SPEEDGRADE">-1L</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.TEMPERATURE_GRADE">I</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_CUSTOMIZATION">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_GENERATION">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPCONTEXT">IP_Integrator</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPREVISION">14</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.MANAGED">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.OUTPUTDIR">.</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SELECTEDSIMMODEL"/>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SHAREDDIR">.</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SWVERSION">2017.4</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SYNTHESISFLOW">GLOBAL</spirit:configurableElementValue>
-      </spirit:configurableElementValues>
-      <spirit:vendorExtensions>
-        <xilinx:componentInstanceExtensions>
-          <xilinx:configElementInfos>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Async_Clk" xilinx:valueSource="propagated"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_SCK_RATIO" xilinx:valueSource="user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_S_AXI4_ID_WIDTH" xilinx:valueSource="user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_STARTUP" xilinx:valueSource="user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_STARTUP_INT" xilinx:valueSource="user"/>
-          </xilinx:configElementInfos>
-        </xilinx:componentInstanceExtensions>
-      </spirit:vendorExtensions>
-    </spirit:componentInstance>
-  </spirit:componentInstances>
-</spirit:design>
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "PmodSD_axi_quad_spi_0_0",
+    "cell_name": "axi_quad_spi_sd",
+    "component_reference": "xilinx.com:ip:axi_quad_spi:3.2",
+    "ip_revision": "32",
+    "gen_directory": "../../../../../../../../../../cae112/users/estay/sandbox/project_5/project_5.tmp/PmodSD_v1_0_project/PmodSD_v1_0_project.gen/sources_1/ip/PmodSD_axi_quad_spi_0_0",
+    "parameters": {
+      "component_parameters": {
+        "C_SPI_MEMORY": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_USE_STARTUP": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_USE_STARTUP_INT": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_SPI_MODE": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_NUM_TRANSFER_BITS": [ { "value": "8", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_DUAL_QUAD_MODE": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_NUM_SS_BITS": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_SCK_RATIO": [ { "value": "8", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_FIFO_DEPTH": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_XIP_MODE": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_BYTE_LEVEL_INTERRUPT_EN": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_XIP_PERF_MODE": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_SPI_MEM_ADDR_BITS": [ { "value": "24", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_FAMILY": [ { "value": "artix7", "resolve_type": "user", "usage": "all" } ],
+        "UC_FAMILY": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_SHARED_STARTUP": [ { "value": "0", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_SUB_FAMILY": [ { "value": "artix7", "resolve_type": "user", "usage": "all" } ],
+        "C_TYPE_OF_AXI4_INTERFACE": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_INSTANCE": [ { "value": "axi_quad_spi_inst", "resolve_type": "user", "usage": "all" } ],
+        "Component_Name": [ { "value": "PmodSD_axi_quad_spi_0_0", "resolve_type": "user", "usage": "all" } ],
+        "Master_mode": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "FIFO_INCLUDED": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Multiples16": [ { "value": "1", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_SCK_RATIO1": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "Async_Clk": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_S_AXI4_BASEADDR": [ { "value": "0xFFFFFFFF", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
+        "C_S_AXI4_HIGHADDR": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "usage": "all" } ],
+        "USE_BOARD_FLOW": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "QSPI_BOARD_INTERFACE": [ { "value": "Custom", "resolve_type": "user", "usage": "all" } ],
+        "C_S_AXI4_ID_WIDTH": [ { "value": "4", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
+        "C_SELECT_XPM": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ]
+      },
+      "model_parameters": {
+        "Async_Clk": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_FAMILY": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
+        "C_SELECT_XPM": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SUB_FAMILY": [ { "value": "artix7", "resolve_type": "generated", "usage": "all" } ],
+        "C_INSTANCE": [ { "value": "axi_quad_spi_inst", "resolve_type": "generated", "usage": "all" } ],
+        "C_SPI_MEM_ADDR_BITS": [ { "value": "24", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_TYPE_OF_AXI4_INTERFACE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_XIP_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_XIP_PERF_MODE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_BYTE_LEVEL_INTERRUPT_EN": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_UC_FAMILY": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_FIFO_DEPTH": [ { "value": "16", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SCK_RATIO": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_DUAL_QUAD_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_NUM_SS_BITS": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_NUM_TRANSFER_BITS": [ { "value": "8", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_NEW_SEQ_EN": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SPI_MODE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_USE_STARTUP": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_USE_STARTUP_EXT": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SPI_MEMORY": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_S_AXI_ADDR_WIDTH": [ { "value": "7", "format": "long", "usage": "all" } ],
+        "C_S_AXI_DATA_WIDTH": [ { "value": "32", "format": "long", "usage": "all" } ],
+        "C_S_AXI4_ADDR_WIDTH": [ { "value": "24", "format": "long", "usage": "all" } ],
+        "C_S_AXI4_DATA_WIDTH": [ { "value": "32", "format": "long", "usage": "all" } ],
+        "C_S_AXI4_ID_WIDTH": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_SHARED_STARTUP": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_S_AXI4_BASEADDR": [ { "value": "0xFFFFFFFF", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
+        "C_S_AXI4_HIGHADDR": [ { "value": "0x00000000", "resolve_type": "generated", "format": "bitString", "usage": "all" } ],
+        "C_LSB_STUP": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a100t" } ],
+        "PACKAGE": [ { "value": "csg324" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "32" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../../../../../cae112/users/estay/sandbox/project_5/project_5.tmp/PmodSD_v1_0_project/PmodSD_v1_0_project.gen/sources_1/ip/PmodSD_axi_quad_spi_0_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "." } ],
+        "SWVERSION": [ { "value": "2024.2" } ],
+        "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "ext_spi_clk": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_aclk": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_aresetn": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_awaddr": [ { "direction": "in", "size_left": "6", "size_right": "0", "driver_value": "0" } ],
+        "s_axi_awvalid": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_awready": [ { "direction": "out" } ],
+        "s_axi_wdata": [ { "direction": "in", "size_left": "31", "size_right": "0", "driver_value": "0" } ],
+        "s_axi_wstrb": [ { "direction": "in", "size_left": "3", "size_right": "0", "driver_value": "0" } ],
+        "s_axi_wvalid": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_wready": [ { "direction": "out" } ],
+        "s_axi_bresp": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
+        "s_axi_bvalid": [ { "direction": "out" } ],
+        "s_axi_bready": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_araddr": [ { "direction": "in", "size_left": "6", "size_right": "0", "driver_value": "0" } ],
+        "s_axi_arvalid": [ { "direction": "in", "driver_value": "0" } ],
+        "s_axi_arready": [ { "direction": "out" } ],
+        "s_axi_rdata": [ { "direction": "out", "size_left": "31", "size_right": "0" } ],
+        "s_axi_rresp": [ { "direction": "out", "size_left": "1", "size_right": "0" } ],
+        "s_axi_rvalid": [ { "direction": "out" } ],
+        "s_axi_rready": [ { "direction": "in", "driver_value": "0" } ],
+        "io0_i": [ { "direction": "in", "driver_value": "0" } ],
+        "io0_o": [ { "direction": "out" } ],
+        "io0_t": [ { "direction": "out", "driver_value": "0" } ],
+        "io1_i": [ { "direction": "in", "driver_value": "0" } ],
+        "io1_o": [ { "direction": "out" } ],
+        "io1_t": [ { "direction": "out", "driver_value": "0" } ],
+        "sck_i": [ { "direction": "in", "driver_value": "0" } ],
+        "sck_o": [ { "direction": "out" } ],
+        "sck_t": [ { "direction": "out" } ],
+        "ss_i": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "ss_o": [ { "direction": "out", "size_left": "0", "size_right": "0" } ],
+        "ss_t": [ { "direction": "out" } ],
+        "ip2intc_irpt": [ { "direction": "out" } ]
+      },
+      "interfaces": {
+        "SPI_0": {
+          "vlnv": "xilinx.com:interface:spi:1.0",
+          "abstraction_type": "xilinx.com:interface:spi_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "BOARD.ASSOCIATED_PARAM": [ { "value": "QSPI_BOARD_INTERFACE", "value_src": "constant", "usage": "all" } ]
+          },
+          "port_maps": {
+            "IO0_I": [ { "physical_name": "io0_i" } ],
+            "IO0_O": [ { "physical_name": "io0_o" } ],
+            "IO0_T": [ { "physical_name": "io0_t" } ],
+            "IO1_I": [ { "physical_name": "io1_i" } ],
+            "IO1_O": [ { "physical_name": "io1_o" } ],
+            "IO1_T": [ { "physical_name": "io1_t" } ],
+            "SCK_I": [ { "physical_name": "sck_i" } ],
+            "SCK_O": [ { "physical_name": "sck_o" } ],
+            "SCK_T": [ { "physical_name": "sck_t" } ],
+            "SS_I": [ { "physical_name": "ss_i" } ],
+            "SS_O": [ { "physical_name": "ss_o" } ],
+            "SS_T": [ { "physical_name": "ss_t" } ]
+          }
+        },
+        "AXI_LITE": {
+          "vlnv": "xilinx.com:interface:aximm:1.0",
+          "abstraction_type": "xilinx.com:interface:aximm_rtl:1.0",
+          "mode": "slave",
+          "memory_map_ref": "AXI_LITE",
+          "parameters": {
+            "DATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PROTOCOL": [ { "value": "AXI4LITE", "value_src": "constant", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "100000000", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "ID_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "ADDR_WIDTH": [ { "value": "7", "value_src": "auto", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "AWUSER_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "ARUSER_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "WUSER_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "RUSER_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "BUSER_WIDTH": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "READ_WRITE_MODE": [ { "value": "READ_WRITE", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_BURST": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_LOCK": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_PROT": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_CACHE": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_QOS": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_REGION": [ { "value": "0", "value_src": "constant", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_WSTRB": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_BRESP": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "HAS_RRESP": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "SUPPORTS_NARROW_BURST": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "NUM_READ_OUTSTANDING": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "NUM_WRITE_OUTSTANDING": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "MAX_BURST_LENGTH": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "NUM_READ_THREADS": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "NUM_WRITE_THREADS": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "RUSER_BITS_PER_BYTE": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "WUSER_BITS_PER_BYTE": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "ARADDR": [ { "physical_name": "s_axi_araddr" } ],
+            "ARREADY": [ { "physical_name": "s_axi_arready" } ],
+            "ARVALID": [ { "physical_name": "s_axi_arvalid" } ],
+            "AWADDR": [ { "physical_name": "s_axi_awaddr" } ],
+            "AWREADY": [ { "physical_name": "s_axi_awready" } ],
+            "AWVALID": [ { "physical_name": "s_axi_awvalid" } ],
+            "BREADY": [ { "physical_name": "s_axi_bready" } ],
+            "BRESP": [ { "physical_name": "s_axi_bresp" } ],
+            "BVALID": [ { "physical_name": "s_axi_bvalid" } ],
+            "RDATA": [ { "physical_name": "s_axi_rdata" } ],
+            "RREADY": [ { "physical_name": "s_axi_rready" } ],
+            "RRESP": [ { "physical_name": "s_axi_rresp" } ],
+            "RVALID": [ { "physical_name": "s_axi_rvalid" } ],
+            "WDATA": [ { "physical_name": "s_axi_wdata" } ],
+            "WREADY": [ { "physical_name": "s_axi_wready" } ],
+            "WSTRB": [ { "physical_name": "s_axi_wstrb" } ],
+            "WVALID": [ { "physical_name": "s_axi_wvalid" } ]
+          }
+        },
+        "lite_clk": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "ASSOCIATED_BUSIF": [ { "value": "AXI_LITE", "value_src": "constant", "usage": "all" } ],
+            "ASSOCIATED_RESET": [ { "value": "s_axi_aresetn", "value_src": "constant", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "100000000", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "s_axi_aclk" } ]
+          }
+        },
+        "lite_reset": {
+          "vlnv": "xilinx.com:signal:reset:1.0",
+          "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "s_axi_aresetn" } ]
+          }
+        },
+        "interrupt": {
+          "vlnv": "xilinx.com:signal:interrupt:1.0",
+          "abstraction_type": "xilinx.com:signal:interrupt_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "SENSITIVITY": [ { "value": "EDGE_RISING", "value_src": "constant", "usage": "all" } ],
+            "PortWidth": [ { "value": "1", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "INTERRUPT": [ { "physical_name": "ip2intc_irpt" } ]
+          }
+        },
+        "spi_clk": {
+          "vlnv": "xilinx.com:signal:clock:1.0",
+          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
+          "mode": "slave",
+          "parameters": {
+            "ASSOCIATED_BUSIF": [ { "value": "SPI_0", "value_src": "constant", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "100000000", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "FREQ_TOLERANCE_HZ": [ { "value": "0", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_PORT": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "ASSOCIATED_RESET": [ { "value": "", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
+            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "CLK": [ { "physical_name": "ext_spi_clk" } ]
+          }
+        }
+      },
+      "memory_maps": {
+        "AXI_LITE": {
+          "display_name": "AXI Register Map",
+          "description": "Memory Map for AXI_LITE",
+          "address_blocks": {
+            "Reg": {
+              "base_address": "0",
+              "range": "4096",
+              "display_name": "Reg",
+              "description": "Register Block",
+              "usage": "register",
+              "access": "read-write",
+              "parameters": {
+                "OFFSET_BASE_PARAM": [ { "value": "C_BASEADDR" } ],
+                "OFFSET_HIGH_PARAM": [ { "value": "C_HIGHADDR" } ]
+              },
+              "registers": {
+                "SRR": {
+                  "address_offset": "0x40",
+                  "size": 32,
+                  "display_name": "Software Reset Register",
+                  "description": "Software Reset Register",
+                  "is_volatile": true,
+                  "access": "write-only",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "Reset": {
+                      "bit_offset": 0,
+                      "bit_width": 32,
+                      "display_name": "AXI Quad SPI Reset",
+                      "description": "The only allowed operation on this register is a write of 0x0000000a, which resets the AXI Quad SPI core.\n",
+                      "is_volatile": true,
+                      "access": "write-only"
+                    }
+                  }
+                },
+                "SPICR": {
+                  "address_offset": "0x60",
+                  "size": 32,
+                  "display_name": "SPI Control Register",
+                  "description": "SPI Control Register",
+                  "is_volatile": true,
+                  "access": "read-write",
+                  "reset_value": "0x180",
+                  "fields": {
+                    "LOOP": {
+                      "bit_offset": 0,
+                      "bit_width": 1,
+                      "display_name": "Loopback Mode",
+                      "description": "Local loopback mode\nEnables local loopback operation and is functional only in standard SPI master mode.\nWhen set to:   0 - Normal operation.   1 - Loopback mode. The transmitter output is internally connected to the receiver input. The receiver and transmitter operate normally, except that received data (from remote slave) is ignored.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "SPE": {
+                      "bit_offset": 1,
+                      "bit_width": 1,
+                      "display_name": "SPI System Enable",
+                      "description": "SPI system enable\nWhen set to:\n  0 - SPI system disabled. Both master and slave outputs are in 3-state and slave inputs are ignored.\n  1 - SPI system enabled. Master outputs active (for example, IO0 (MOSI) and SCK in idle state) and slave outputs become active if SS becomes asserted. The master starts transferring when transmit data is available.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Master": {
+                      "bit_offset": 2,
+                      "bit_width": 1,
+                      "display_name": "Master",
+                      "description": "Master (SPI master mode)\nSetting this bit configures the SPI device as a master or a slave.\nWhen set to:\n  0 - Slave configuration.\n  1 - Master configuration.\nIn dual/quad SPI mode only the master mode of the core is allowed.\nStandard Slave mode is not supported for SCK ratio = 2\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "CPOL": {
+                      "bit_offset": 3,
+                      "bit_width": 1,
+                      "display_name": "Clock Polarity",
+                      "description": "Clock polarity\nSetting this bit defines clock polarity.\nWhen set to:\n  0 - Active-High clock; SCK idles Low.\n  1 - Active-Low clock; SCK idles High.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "CPHA": {
+                      "bit_offset": 4,
+                      "bit_width": 1,
+                      "display_name": "Clock Phase",
+                      "description": "Clock phase\nSetting this bit selects one of two fundamentally different transfer formats.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "TX_FIFO_Reset": {
+                      "bit_offset": 5,
+                      "bit_width": 1,
+                      "display_name": "Transmit FIFO reset",
+                      "description": "Transmit FIFO reset\nWhen written to 1, this bit forces a reset of the transmit FIFO to the empty condition. One AXI clock cycle after reset, this bit is again set to 0.\nWhen set to:   0 - Transmit FIFO normal operation.   1 - Reset transmit FIFO pointer\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "RX_FIFO_Reset": {
+                      "bit_offset": 6,
+                      "bit_width": 1,
+                      "display_name": "Receive FIFO reset",
+                      "description": "Receive FIFO reset\nWhen written to 1, this bit forces a reset of the receive FIFO to the empty condition. One AXI clock cycle after reset, this bit is again set to 0.\nWhen set to:   0 - Receive FIFO normal operation.   1 - Reset receive FIFO pointer.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Manual_Slave_Select_Assertion_Enable": {
+                      "bit_offset": 7,
+                      "bit_width": 1,
+                      "display_name": "Manual Slave Select Assertion Enable",
+                      "description": "Manual slave select assertion enable\nThis bit forces the data in the slave select register to be asserted on the slave select output anytime the device is configured as a master and the device is enabled (SPE asserted).\nThis bit has no effect on slave operation.\nWhen set to:   0 - Slave select output asserted by master core logic.   1 - Slave select output follows data in slave select register. The manual slave assertion mode is supported in standard SPI mode only.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Master_Transaction_Inhibit": {
+                      "bit_offset": 8,
+                      "bit_width": 1,
+                      "display_name": "Master_Transaction_Inhibit",
+                      "description": "Master transaction inhibit\nThis bit inhibits master transactions.\nThis bit has no effect on slave operation.\nWhen set to:   0 - Master transactions enabled.   1 - Master transactions disabled. This bit immediately inhibits the transaction. Setting this bit while transfer is in progress would result in unpredictable outcome\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "LSB_First": {
+                      "bit_offset": 9,
+                      "bit_width": 1,
+                      "display_name": "LSB First",
+                      "description": "LSB first\nThis bit selects LSB first data transfer format.\nThe default transfer format is MSB first.\nWhen set to:\n  0 - MSB first transfer format.\n  1 - LSB first transfer format.\nIn Dual/Quad SPI mode, only the MSB first mode of the core is allowed.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    }
+                  }
+                },
+                "SPISR": {
+                  "address_offset": "0x64",
+                  "size": 32,
+                  "display_name": "SPI Status Register",
+                  "description": "SPI Status Register",
+                  "is_volatile": true,
+                  "access": "read-only",
+                  "reset_value": "0x0A5",
+                  "fields": {
+                    "RX_Empty": {
+                      "bit_offset": 0,
+                      "bit_width": 1,
+                      "display_name": "Receive Empty",
+                      "description": "Receive Empty.\nWhen a receive FIFO exists, this bit is set High when the receive FIFO is empty. The occupancy of the FIFO is decremented with each FIFO read operation.\nNote: When FIFOs do not exist, this bit is set High when the receive register has been read (this option is available only in standard SPI mode). This bit is cleared at the end of a successful SPI transfer. For dual/quad SPI mode, the FIFO is always present in the core.\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "RX_Full": {
+                      "bit_offset": 1,
+                      "bit_width": 1,
+                      "display_name": "Receive Full",
+                      "description": "Receive full.\nWhen a receive FIFO exists, this bit is set High when the receive FIFO is full. The occupancy of the FIFO is incremented with the completion of each SPI transaction.\nNote: When FIFOs do not exist, this bit is set High when an SPI transfer has completed (this option is available only in standard SPI mode). Rx_Empty and Rx_Full are complements in this case\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "TX_Empty": {
+                      "bit_offset": 2,
+                      "bit_width": 1,
+                      "display_name": "Transmit Empty",
+                      "description": "Transmit empty.\nWhen a transmit FIFO exists, this bit is set to High when the transmit FIFO is empty. This bit goes High as soon as the TX FIFO becomes empty. While this bit is High, the last byte of the data that is to be transmitted would still be in the pipeline.\nThe occupancy of the FIFO is decremented with the completion of each SPI transfer.\nNote: When FIFOs do not exist, this bit is set with the completion of an SPI transfer (this option is available only in standard SPI mode). Either with or without FIFOs, this bit is cleared on an AXI write to the FIFO or transmit register. For Dual/Quad SPI mode, the FIFO is always present in the core.\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "TX_Full": {
+                      "bit_offset": 3,
+                      "bit_width": 1,
+                      "display_name": "Transmit Full",
+                      "description": "Transmit full.\nWhen a transmit FIFO exists, this bit is set High when the transmit FIFO is full.\nNote: When FIFOs do not exist, this bit is set High when an AXI write to the transmit register has been made (this option is available only in standard SPI mode). This bit is cleared when the SPI transfer is completed\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "MODF": {
+                      "bit_offset": 4,
+                      "bit_width": 1,
+                      "display_name": "Mode-fault error flag",
+                      "description": "Mode-fault error flag.\nThis flag is set if the SS signal goes active while the SPI device is configured as a master. MODF is automatically cleared by reading the SPISR. \nA Low-to-High MODF transition generates a single-cycle strobe interrupt.   0 - No error.   1 - Error condition detected\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "Slave_Mode_Select": {
+                      "bit_offset": 5,
+                      "bit_width": 1,
+                      "display_name": "Slave Mode Select",
+                      "description": "Slave_Mode_Select flag.\nThis flag is asserted when the core is configured in slave mode. Slave_Mode_Select is activated as soon as the master SPI core asserts the chip select pin for the core.\n1 - Default in standard mode.\n0 - Asserted when core configured in slave mode and selected by external SPI master.\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "CPOL_CPHA_Error": {
+                      "bit_offset": 6,
+                      "bit_width": 1,
+                      "display_name": "CPOL_CPHA_Error",
+                      "description": "CPOL_CPHA_Error flag.\nWhen set to:   0 - Default.   1 - The CPOL and CPHA are set to 01 or 10. When the SPI memory is chosen as either Winbond, Micron or Spansion, and CPOL and CPHA are configured as 01 or 10, this bit is set.\nThese memories support CPOL=CPHA mode in 00 or in 11 mode. CPOL_CPHA_Error flag is only applicable when the core is configured either in dual or quad mode in legacy or enhanced mode AXI4 interface\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "Slave_mode_error": {
+                      "bit_offset": 7,
+                      "bit_width": 1,
+                      "display_name": "Slave mode error",
+                      "description": "Slave mode error flag.\nWhen set to:   1 - This bit is set when the core is configured with dual or quad SPI mode and the master is set to 0 in the control register (SPICR).   0 - Master mode is set in the control register (SPICR). Note: Quad SPI mode, only the master mode of the core is allowed. Slave mode error flag is only applicable when the core is configured either in dual or qu ad mode in legacy or enhanced AXI4 mode interface\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "MSB_Error": {
+                      "bit_offset": 8,
+                      "bit_width": 1,
+                      "display_name": "MSB Error",
+                      "description": "MSB error flag.\nWhen set to:   0 - Default.   1 - This bit is set when the core is configured to transfer the SPI transactions in either dual or quad SPI mode and LSB first bit is set in the control register (SPICR). Note: In dual/quad SPI mode, only the MSB first mode of the core is allowed. MSB error flag is only applicable when the core is configured either in dual or quad mode in legacy or enhanced mode AXI4 interface\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "Loopback_Error": {
+                      "bit_offset": 9,
+                      "bit_width": 1,
+                      "display_name": "Loopback Error",
+                      "description": "Loopback error flag.\nWhen set to:   0 - Default. The loopback bit in the control register is at default state.   1 - When the SPI command, address, and data bits are set to be transferred in other than standard SPI protocol mode and this bit is set in control register (SPICR). Note: Loopback is only allowed when the core is configured in standard mode. Other modes setting of the bit causes an error and the interrupt bit is set in legacy or enhanced mode AXI4 interface\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    },
+                    "Command_Error": {
+                      "bit_offset": 10,
+                      "bit_width": 1,
+                      "display_name": "Command Error",
+                      "description": "Command error flag.\nWhen set to:   0 - Default.   1 - When the core is configured in dual/quad SPI mode and the first entry in the SPI DTR FIFO (after reset) do not match with the supported command list for the particular memory, this bit is set. Note: Command error is only applicable when the core is configured either in dual or quad mode in legacy or enhanced mode AXI4 interface.\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    }
+                  }
+                },
+                "SPI_SSR": {
+                  "address_offset": "0x70",
+                  "size": 32,
+                  "display_name": "SPI Slave Select Register",
+                  "description": "SPI Slave Select Register",
+                  "is_volatile": true,
+                  "access": "read-write",
+                  "reset_value": "0xFFFF",
+                  "fields": {
+                    "Selected_Slave": {
+                      "bit_offset": 0,
+                      "bit_width": 1,
+                      "display_name": "Selected Slave",
+                      "description": "Active-Low, one-hot encoded slave select\nThe slaves are numbered right to left starting at zero with the LSB. The slave numbers correspond to the indexes of signal SS\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    }
+                  }
+                },
+                "SPI_TXFIFO_OR": {
+                  "address_offset": "0x74",
+                  "size": 32,
+                  "display_name": "Transmit FIFO Occupancy Register",
+                  "description": "SPI Transmit FIFO Occupancy Register",
+                  "is_volatile": true,
+                  "access": "read-only",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "Occupancy_Value": {
+                      "bit_offset": 0,
+                      "bit_width": 32,
+                      "display_name": "Occupancy Value",
+                      "description": "The binary value plus 1 yields the occupancy.\nBit width is log(FIFO Depth). \n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    }
+                  }
+                },
+                "SPI_RXFIFO_OR": {
+                  "address_offset": "0x78",
+                  "size": 32,
+                  "display_name": "Receive FIFO Occupancy Register",
+                  "description": "SPI Receive FIFO Occupancy Register",
+                  "is_volatile": true,
+                  "access": "read-only",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "Occupancy_Value": {
+                      "bit_offset": 0,
+                      "bit_width": 32,
+                      "display_name": "Occupancy Value",
+                      "description": "The binary value plus 1 yields the occupancy. \nBit width is log(FIFO Depth). \n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    }
+                  }
+                },
+                "DGIER": {
+                  "address_offset": "0x1C",
+                  "size": 32,
+                  "display_name": "Device Global Interrupt Enable Register",
+                  "description": "Device Global Interrupt Enable Register",
+                  "is_volatile": true,
+                  "access": "read-write",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "GIE": {
+                      "bit_offset": 31,
+                      "bit_width": 1,
+                      "display_name": "Global Interrupt Enable",
+                      "description": "Global Interrupt Enable.\nAllows passing all individually enabled interrupts to the interrupt controller.\nWhen set to:   0 - Disabled.   1 - Enabled. \n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    }
+                  }
+                },
+                "SPI_DTR": {
+                  "address_offset": "0x68",
+                  "size": 32,
+                  "display_name": "SPI Data Transmit Register",
+                  "description": "SPI Data Transmit Register",
+                  "is_volatile": true,
+                  "access": "write-only",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "TX_Data": {
+                      "bit_offset": 0,
+                      "bit_width": 8,
+                      "display_name": "TX_Data",
+                      "description": "SPI Transmit Data.\n",
+                      "is_volatile": true,
+                      "access": "write-only"
+                    }
+                  }
+                },
+                "SPI_DRR": {
+                  "address_offset": "0x6C",
+                  "size": 32,
+                  "display_name": "SPI Data Receive Register",
+                  "description": "SPI Data Receive Register",
+                  "is_volatile": true,
+                  "access": "read-only",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "RX_Data": {
+                      "bit_offset": 0,
+                      "bit_width": 8,
+                      "display_name": "Receive Data",
+                      "description": "SPI Receive Data\n",
+                      "is_volatile": true,
+                      "access": "read-only"
+                    }
+                  }
+                },
+                "IPISR": {
+                  "address_offset": "0x20",
+                  "size": 32,
+                  "display_name": "IP Interrupt Status Register",
+                  "description": "IP Interrupt Status Register",
+                  "is_volatile": true,
+                  "access": "read-write",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "MODF": {
+                      "bit_offset": 0,
+                      "bit_width": 1,
+                      "display_name": "Mode Fault Error",
+                      "description": "Mode-fault error.\nThis interrupt is generated if the SS signal goes active while the SPI device is configured as a master. This bit is set immediately on SS going active.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_MODF": {
+                      "bit_offset": 1,
+                      "bit_width": 1,
+                      "display_name": "Slave Mode Fault Error",
+                      "description": "Slave mode-fault error.\nThis interrupt is generated if the SS signal goes active while the SPI device is configured as a slave, but is not enabled.\nThis bit is set immediately on SS going active and continually set if SS is active and the device is not enabled\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DTR_Empty": {
+                      "bit_offset": 2,
+                      "bit_width": 1,
+                      "display_name": "Data transmit register/FIFO empty",
+                      "description": "Data transmit register/FIFO empty.\nIt is set when the last byte of data has been transferred out to the external flash memory.\nIn the context of the M68HC11 reference manual, when configured without FIFOs, this interrupt is equivalent in information content to the complement of the SPI transfer complete flag (SPIF ) interrupt bit.\nIn master mode if this bit is set to 1, no more SPI transfers are permitted\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DTR_Underrun": {
+                      "bit_offset": 3,
+                      "bit_width": 1,
+                      "display_name": "Data transmit register/FIFO underrun",
+                      "description": "Data transmit register/FIFO underrun.\nThis bit is set at the end of a SPI element transfer by a one-clock period strobe to the interrupt register when data is requested from an empty transmit register/FIFO by the SPI core logic to perform a SPI transfer.\nThis can occur only when the SPI device is configured as a slave in standard SPI configuration and is enabled by the SPE bit as set. All zeros are loaded in the shift register and transmitted by the slave in an under-run condition\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Full": {
+                      "bit_offset": 4,
+                      "bit_width": 1,
+                      "display_name": "Data receive register/FIFO full",
+                      "description": "Data receive register/FIFO full.\nWithout FIFOs, this bit is set at the end of a SPI element transfer by a one-clock period strobe to the interrupt register (An element can be a byte, half-word, or word depending on the value of Transfer Width).\nWith FIFOs, this bit is set at the end of the SPI element transfer, when the receive FIFO has been completely filled by a one-clock period strobe to the interrupt register.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Overrun": {
+                      "bit_offset": 5,
+                      "bit_width": 1,
+                      "display_name": "Data receive register/FIFO overrun",
+                      "description": "Data receive register/FIFO overrun.\nThis bit is set by a one-clock period strobe to the interrupt register when an attempt to write data to a full receive register or FIFO is made by the SPI core logic to complete a SPI transfer.\nThis can occur when the SPI device is in either master or slave mode (in standard SPI mode) or if the IP is configured in SPI master mode (dual or quad SPI mode).\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "TXFIFO_Half_Empty": {
+                      "bit_offset": 6,
+                      "bit_width": 1,
+                      "display_name": "Transmit FIFO half empty",
+                      "description": "Transmit FIFO half empty.\nIn standard SPI configuration, IPISR Bit[6] is the transmit FIFO half-empty interrupt. \nIn dual or quad SPI configuration, based on the FIFO depth, this bit is set at half-empty condition.\nNote: This interrupt exists only if the AXI Quad SPI core is configured with FIFOs (In standard, dual or quad SPI mode).\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_Select_Mode": {
+                      "bit_offset": 7,
+                      "bit_width": 1,
+                      "display_name": "Slave Select Mode",
+                      "description": "Slave select mode.\nThe assertion of this bit is applicable only when the core is configured in slave mode in standard SPI configuration. \nThis bit is set when the other SPI master core selects the core by asserting the slave select line. This bit is set by a one-clock period strobe to the interrupt register.\nNote: This bit is applicable only in standard SPI slave mode\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Not_Empty": {
+                      "bit_offset": 8,
+                      "bit_width": 1,
+                      "display_name": "DRR Not Empty",
+                      "description": "DRR not empty.\nThe assertion of this bit is applicable only in the case where FIFO Depth is 16 or 256 and the core is configured in slave mode and standard SPI mode. This bit is set when the DRR FIFO receives the first data value during the SPI transaction.\nThis bit is set by a one-clock period strobe to the interrupt register when the core receives the first data beat.\nNote: The assertion of this bit is applicable only when the FIFO Depth parameter is 16 or 256 and the core is configured in slave mode in standard SPI mode. When FIFO Depth is set to 0, this bit always returns 0. This bit has no significance in dual/quad mode\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "CPOL_CPHA_Error": {
+                      "bit_offset": 9,
+                      "bit_width": 1,
+                      "display_name": "CPOL_CPHA Error",
+                      "description": "CPOL_CPHA error.\nThis flag is asserted when:\n  The core is configured in either dual or quad SPI mode and\n  The CPOL - CPHA control register bits are set to 01 or 10.\nIn standard SPI mode, this bit is always in default state.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_Mode_Error": {
+                      "bit_offset": 10,
+                      "bit_width": 1,
+                      "display_name": "I/O mode instruction Error",
+                      "description": "I/O mode instruction error.\nThis flag is asserted when:\n  The core is configured in either dual or quad SPI mode and\n  The core is configured in master = 0 in control register (SPICR(2)).\nIn standard SPI mode, this bit is always in default state.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "MSB_Error": {
+                      "bit_offset": 11,
+                      "bit_width": 1,
+                      "display_name": "MSB Error",
+                      "description": "MSB error.\nThis flag is asserted when:\n  The core is configured in either dual or quad SPI mode and\n  The LSB First bit in the control register (SPICR) is set to 1.\nIn standard SPI mode, this bit is always in default state.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Loopback_Error": {
+                      "bit_offset": 12,
+                      "bit_width": 1,
+                      "display_name": "Loopback Error",
+                      "description": "Loopback error.\nThis flag is asserted when:\n  The core is configured in dual or quad SPI transfer mode and\n  The LOOP bit is set in control register (SPICR(0)).\nIn standard SPI mode, this bit is always in default state.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Command_Error": {
+                      "bit_offset": 13,
+                      "bit_width": 1,
+                      "display_name": "Command Error",
+                      "description": "Command error.\nThis flag is asserted when:   The core is configured in dual/quad SPI mode and   The first entry in the SPI DTR FIFO (after reset) does not match with the supported command list for particular memory. When the SPI command in DTR FIFO does not match with the internal supported command list, the core completes the SPI transactions in standard SPI format. This bit is set to show this behavior of the core.\nIn standard SPI mode this bit is always in default state.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    }
+                  }
+                },
+                "IPIER": {
+                  "address_offset": "0x28",
+                  "size": 32,
+                  "display_name": "IP Interrupt Enable Register",
+                  "description": "IP Interrupt Enable Register",
+                  "is_volatile": true,
+                  "access": "read-write",
+                  "reset_value": "0x0",
+                  "fields": {
+                    "MODF": {
+                      "bit_offset": 0,
+                      "bit_width": 1,
+                      "display_name": "Mode-fault error flag",
+                      "description": "Mode-fault error flag.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_MODF": {
+                      "bit_offset": 1,
+                      "bit_width": 1,
+                      "display_name": "Slave mode-fault error flag",
+                      "description": "Slave mode-fault error flag.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DTR_Empty": {
+                      "bit_offset": 2,
+                      "bit_width": 1,
+                      "display_name": "Data transmit register/FIFO empty",
+                      "description": "Data transmit register/FIFO empty.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DTR_Underrun": {
+                      "bit_offset": 3,
+                      "bit_width": 1,
+                      "display_name": "Data transmit FIFO underrun",
+                      "description": "Data transmit FIFO underrun.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Full": {
+                      "bit_offset": 4,
+                      "bit_width": 1,
+                      "display_name": "Data receive register/FIFO full",
+                      "description": "Data receive register/FIFO full.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Overrun": {
+                      "bit_offset": 5,
+                      "bit_width": 1,
+                      "display_name": "Receive FIFO overrun",
+                      "description": "Receive FIFO overrun.\n  0 - Disabled.\n  1 - Enabled.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "TX_FIFO_Half_Empty": {
+                      "bit_offset": 6,
+                      "bit_width": 1,
+                      "display_name": "Transmit FIFO half empty",
+                      "description": "Transmit FIFO half empty.   0 - Disabled.   1 - Enabled. Note: This bit is meaningful only if the AXI Quad SPI core is configured with FIFOs.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_Select_Mode": {
+                      "bit_offset": 7,
+                      "bit_width": 1,
+                      "display_name": "Slave_Select_Mode",
+                      "description": "Slave_Select_Mode.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in slave mode by selecting the active-Low status on spisel.\nIn master mode, setting this bit has no effect.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "DRR_Not_Empty": {
+                      "bit_offset": 8,
+                      "bit_width": 1,
+                      "display_name": "DRR_Not_Empty",
+                      "description": "DRR_Not_Empty.   0 - Disabled.   1 - Enabled. Note: The setting of this bit is applicable only when FIFO Depth is set to 1 and the core is configured in slave mode of standard SPI mode.\nIf FIFO Depth is set to 0, the setting of this bit has no effect. This is allowed only in standard SPI configuration. It means this bit is not set in the IPIER register. Therefore, this bit should only be used when FIFO Depth is set to 1 and when the core is configured in slave mode.\nThis bit has no significance in dual or quad mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "CPOL_CPHA_Error": {
+                      "bit_offset": 9,
+                      "bit_width": 1,
+                      "display_name": "CPOL_CPHA error",
+                      "description": "CPOL_CPHA error.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in dual or quad SPI mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Slave_Mode_Error": {
+                      "bit_offset": 10,
+                      "bit_width": 1,
+                      "display_name": "Slave_Mode_Error",
+                      "description": "I/O mode instruction error.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in dual or quad SPI mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "MSB_Error": {
+                      "bit_offset": 11,
+                      "bit_width": 1,
+                      "display_name": "MSB_Error",
+                      "description": "MSB_Error.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in dual or quad SPI mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Loopback_Error": {
+                      "bit_offset": 12,
+                      "bit_width": 1,
+                      "display_name": "Loopback Error",
+                      "description": "Loopback Error.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in dual or quad SPI mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    },
+                    "Command_Error": {
+                      "bit_offset": 13,
+                      "bit_width": 1,
+                      "display_name": "Command_Error",
+                      "description": "Command_Error.   0 - Disabled.   1 - Enabled. This bit is applicable only when the core is configured in dual or quad SPI mode.\n",
+                      "is_volatile": true,
+                      "access": "read-write"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

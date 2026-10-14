@@ -1,0 +1,38 @@
+package require xilinx::board 1.0
+namespace import ::xilinx::board::*
+set instname [current_inst]
+set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -force ${instname}_board.xdc]
+puts_ipfile $f_xdc "#--------------------Physical Constraints-----------------\n"
+if {[get_project_property BOARD] == "" } {
+    close_ipfile $f_xdc
+    return 
+}
+
+set board_if [get_property PARAM_VALUE.DDR_MEM_INTERFACE_BOARD_INTERFACE]
+puts "to board interface $board_if"
+ 
+if { $board_if ne "Custom"} {
+
+    board_add_port_constraints $f_xdc $board_if CAS_N ddr_mem_interface_cas_n
+    board_add_port_constraints $f_xdc $board_if RAS_N ddr_mem_interface_ras_n
+    board_add_port_constraints $f_xdc $board_if CK_N  ddr_mem_interface_ck_n
+    board_add_port_constraints $f_xdc $board_if CK_P  ddr_mem_interface_ck_p
+    board_add_port_constraints $f_xdc $board_if WE_N  ddr_mem_interface_we_n 
+    board_add_port_constraints $f_xdc $board_if CKE   ddr_mem_interface_cke 
+    board_add_port_constraints $f_xdc $board_if CS_N  ddr_mem_interface_cs_n     
+
+    board_add_port_constraints $f_xdc $board_if ADDR  ddr_mem_interface_addr 
+    board_add_port_constraints $f_xdc $board_if BA    ddr_mem_interface_ba 
+    
+    board_add_port_constraints $f_xdc $board_if DQ    ddr_mem_interface_dq 
+    board_add_port_constraints $f_xdc $board_if ODT   ddr_mem_interface_odt  
+    board_add_port_constraints $f_xdc $board_if DQS_N ddr_mem_interface_dqs_n  
+    board_add_port_constraints $f_xdc $board_if DQS_P ddr_mem_interface_dqs_p 
+    board_add_port_constraints $f_xdc $board_if DM  ddr_mem_interface_dm
+    puts "Applied to $board_if" 
+    close_ipfile $f_xdc
+}
+#if { [file exists $f_xdc] } {
+#    close_ipfile $f_xdc
+#}
+return 

@@ -1,49 +1,142 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<spirit:design xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <spirit:vendor>xilinx.com</spirit:vendor>
-  <spirit:library>xci</spirit:library>
-  <spirit:name>unknown</spirit:name>
-  <spirit:version>1.0</spirit:version>
-  <spirit:componentInstances>
-    <spirit:componentInstance>
-      <spirit:instanceName>PmodSD_pmod_bridge_0_0</spirit:instanceName>
-      <spirit:componentRef spirit:vendor="digilentinc.com" spirit:library="ip" spirit:name="pmod_bridge" spirit:version="1.0"/>
-      <spirit:configurableElementValues>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.Bottom_Row_Interface">Disabled</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.Top_Row_Interface">SPI</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Bottom_Row_Interface">Disabled</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Component_Name">PmodSD_pmod_bridge_0_0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PMOD">Custom</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.Top_Row_Interface">SPI</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.USE_BOARD_FLOW">false</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.ARCHITECTURE">artix7</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.BOARD">digilentinc.com:arty:part0:1.1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.DEVICE">xc7a35ti</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PACKAGE">csg324</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.PREFHDL">VERILOG</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SILICON_REVISION"/>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SIMULATOR_LANGUAGE">MIXED</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.SPEEDGRADE">-1L</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.TEMPERATURE_GRADE">I</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_CUSTOMIZATION">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PROJECT_PARAM.USE_RDI_GENERATION">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPCONTEXT">IP_Integrator</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPREVISION">9</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.MANAGED">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.OUTPUTDIR">.</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SELECTEDSIMMODEL"/>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SHAREDDIR">.</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SWVERSION">2017.4</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SYNTHESISFLOW">GLOBAL</spirit:configurableElementValue>
-      </spirit:configurableElementValues>
-      <spirit:vendorExtensions>
-        <xilinx:componentInstanceExtensions>
-          <xilinx:configElementInfos>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Bottom_Row_Interface" xilinx:valueSource="user"/>
-            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.Top_Row_Interface" xilinx:valueSource="user"/>
-          </xilinx:configElementInfos>
-        </xilinx:componentInstanceExtensions>
-      </spirit:vendorExtensions>
-    </spirit:componentInstance>
-  </spirit:componentInstances>
-</spirit:design>
+{
+  "schema": "xilinx.com:schema:json_instance:1.0",
+  "ip_inst": {
+    "xci_name": "PmodSD_pmod_bridge_0_0",
+    "cell_name": "pmod_bridge_0",
+    "component_reference": "digilentinc.com:ip:pmod_bridge:1.1",
+    "ip_revision": "8",
+    "gen_directory": "../../../../../../../../../../cae112/users/estay/sandbox/project_5/project_5.tmp/PmodSD_v1_0_project/PmodSD_v1_0_project.gen/sources_1/ip/PmodSD_pmod_bridge_0_0",
+    "parameters": {
+      "component_parameters": {
+        "Component_Name": [ { "value": "PmodSD_pmod_bridge_0_0", "resolve_type": "user", "usage": "all" } ],
+        "Top_Row_Interface": [ { "value": "SPI", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "Bottom_Row_Interface": [ { "value": "Disabled", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "PMOD": [ { "value": "sd", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
+        "USE_BOARD_FLOW": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "USE_PULLUPS": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ]
+      },
+      "model_parameters": {
+        "Top_Row_Interface": [ { "value": "SPI", "resolve_type": "generated", "usage": "all" } ],
+        "Bottom_Row_Interface": [ { "value": "Disabled", "resolve_type": "generated", "usage": "all" } ]
+      },
+      "project_parameters": {
+        "ARCHITECTURE": [ { "value": "artix7" } ],
+        "BASE_BOARD_PART": [ { "value": "digilentinc.com:nexys-a7-100t:part0:1.3" } ],
+        "BOARD_CONNECTIONS": [ { "value": "" } ],
+        "DEVICE": [ { "value": "xc7a100t" } ],
+        "PACKAGE": [ { "value": "csg324" } ],
+        "PREFHDL": [ { "value": "VERILOG" } ],
+        "SILICON_REVISION": [ { "value": "" } ],
+        "SIMULATOR_LANGUAGE": [ { "value": "MIXED" } ],
+        "SPEEDGRADE": [ { "value": "-1" } ],
+        "STATIC_POWER": [ { "value": "" } ],
+        "TEMPERATURE_GRADE": [ { "value": "" } ]
+      },
+      "runtime_parameters": {
+        "IPCONTEXT": [ { "value": "IP_Integrator" } ],
+        "IPREVISION": [ { "value": "8" } ],
+        "MANAGED": [ { "value": "TRUE" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../../../../../cae112/users/estay/sandbox/project_5/project_5.tmp/PmodSD_v1_0_project/PmodSD_v1_0_project.gen/sources_1/ip/PmodSD_pmod_bridge_0_0" } ],
+        "SELECTEDSIMMODEL": [ { "value": "" } ],
+        "SHAREDDIR": [ { "value": "." } ],
+        "SWVERSION": [ { "value": "2024.2" } ],
+        "SYNTHESISFLOW": [ { "value": "GLOBAL" } ]
+      }
+    },
+    "boundary": {
+      "ports": {
+        "in0_I": [ { "direction": "out" } ],
+        "in1_I": [ { "direction": "out" } ],
+        "in2_I": [ { "direction": "out" } ],
+        "in3_I": [ { "direction": "out" } ],
+        "in0_O": [ { "direction": "in", "driver_value": "1" } ],
+        "in1_O": [ { "direction": "in", "driver_value": "1" } ],
+        "in2_O": [ { "direction": "in", "driver_value": "1" } ],
+        "in3_O": [ { "direction": "in", "driver_value": "1" } ],
+        "in0_T": [ { "direction": "in", "driver_value": "1" } ],
+        "in1_T": [ { "direction": "in", "driver_value": "1" } ],
+        "in2_T": [ { "direction": "in", "driver_value": "1" } ],
+        "in3_T": [ { "direction": "in", "driver_value": "1" } ],
+        "out0_I": [ { "direction": "in" } ],
+        "out1_I": [ { "direction": "in" } ],
+        "out2_I": [ { "direction": "in" } ],
+        "out3_I": [ { "direction": "in" } ],
+        "out4_I": [ { "direction": "in" } ],
+        "out5_I": [ { "direction": "in" } ],
+        "out6_I": [ { "direction": "in" } ],
+        "out7_I": [ { "direction": "in" } ],
+        "out0_O": [ { "direction": "out" } ],
+        "out1_O": [ { "direction": "out" } ],
+        "out2_O": [ { "direction": "out" } ],
+        "out3_O": [ { "direction": "out" } ],
+        "out4_O": [ { "direction": "out" } ],
+        "out5_O": [ { "direction": "out" } ],
+        "out6_O": [ { "direction": "out" } ],
+        "out7_O": [ { "direction": "out" } ],
+        "out0_T": [ { "direction": "out" } ],
+        "out1_T": [ { "direction": "out" } ],
+        "out2_T": [ { "direction": "out" } ],
+        "out3_T": [ { "direction": "out" } ],
+        "out4_T": [ { "direction": "out" } ],
+        "out5_T": [ { "direction": "out" } ],
+        "out6_T": [ { "direction": "out" } ],
+        "out7_T": [ { "direction": "out" } ]
+      },
+      "interfaces": {
+        "Pmod_out": {
+          "vlnv": "digilentinc.com:interface:pmod:1.0",
+          "abstraction_type": "digilentinc.com:interface:pmod_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "BOARD.ASSOCIATED_PARAM": [ { "value": "PMOD", "value_src": "constant", "usage": "all" } ]
+          },
+          "port_maps": {
+            "PIN1_O": [ { "physical_name": "out0_O" } ],
+            "PIN7_I": [ { "physical_name": "out4_I" } ],
+            "PIN2_O": [ { "physical_name": "out1_O" } ],
+            "PIN8_I": [ { "physical_name": "out5_I" } ],
+            "PIN3_O": [ { "physical_name": "out2_O" } ],
+            "PIN9_I": [ { "physical_name": "out6_I" } ],
+            "PIN10_O": [ { "physical_name": "out7_O" } ],
+            "PIN4_O": [ { "physical_name": "out3_O" } ],
+            "PIN3_I": [ { "physical_name": "out2_I" } ],
+            "PIN4_I": [ { "physical_name": "out3_I" } ],
+            "PIN1_I": [ { "physical_name": "out0_I" } ],
+            "PIN2_I": [ { "physical_name": "out1_I" } ],
+            "PIN10_T": [ { "physical_name": "out7_T" } ],
+            "PIN8_T": [ { "physical_name": "out5_T" } ],
+            "PIN9_T": [ { "physical_name": "out6_T" } ],
+            "PIN4_T": [ { "physical_name": "out3_T" } ],
+            "PIN9_O": [ { "physical_name": "out6_O" } ],
+            "PIN10_I": [ { "physical_name": "out7_I" } ],
+            "PIN7_T": [ { "physical_name": "out4_T" } ],
+            "PIN1_T": [ { "physical_name": "out0_T" } ],
+            "PIN2_T": [ { "physical_name": "out1_T" } ],
+            "PIN7_O": [ { "physical_name": "out4_O" } ],
+            "PIN3_T": [ { "physical_name": "out2_T" } ],
+            "PIN8_O": [ { "physical_name": "out5_O" } ]
+          }
+        },
+        "SPI_Top_Row": {
+          "vlnv": "xilinx.com:interface:spi:1.0",
+          "abstraction_type": "xilinx.com:interface:spi_rtl:1.0",
+          "mode": "mirroredMaster",
+          "port_maps": {
+            "SCK_T": [ { "physical_name": "in3_T" } ],
+            "IO1_O": [ { "physical_name": "in2_O" } ],
+            "SS_T": [ { "physical_name": "in0_T" } ],
+            "IO0_O": [ { "physical_name": "in1_O" } ],
+            "SCK_I": [ { "physical_name": "in3_I" } ],
+            "SS_O": [ { "physical_name": "in0_O" } ],
+            "IO0_T": [ { "physical_name": "in1_T" } ],
+            "IO1_T": [ { "physical_name": "in2_T" } ],
+            "SCK_O": [ { "physical_name": "in3_O" } ],
+            "SS_I": [ { "physical_name": "in0_I" } ],
+            "IO1_I": [ { "physical_name": "in2_I" } ],
+            "IO0_I": [ { "physical_name": "in1_I" } ]
+          }
+        }
+      }
+    }
+  }
+}

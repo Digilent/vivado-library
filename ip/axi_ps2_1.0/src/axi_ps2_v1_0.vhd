@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity axi_ps2_v1_0 is
+entity axi_ps2 is
 	generic (
 		-- Users to add parameters here
 
@@ -51,9 +51,9 @@ entity axi_ps2_v1_0 is
 		S_AXI_rvalid	: out std_logic;
 		S_AXI_rready	: in std_logic
 	);
-end axi_ps2_v1_0;
+end axi_ps2;
 
-architecture arch_imp of axi_ps2_v1_0 is
+architecture arch_imp of axi_ps2 is
 
 	-- component declaration
 	component axi_ps2_v1_0_S_AXI is

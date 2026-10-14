@@ -1,0 +1,49 @@
+#-----------------------------------------------------------
+# Vivado v2024.2_AR37126 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Sun Jan 12 01:10:41 2025
+# Process ID         : 277839
+# Current directory  : /slowfs/cae112/users/estay/sandbox/project_2
+# Command line       : vivado -mode batch -log /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/vivado.log -source /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/vivado_synth.tcl
+# Log file           : /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/vivado.log
+# Journal file       : /slowfs/cae112/users/estay/sandbox/project_2/vivado.jou
+# Running On         : us01odcvde02117
+# Platform           : AlmaLinux
+# Operating System   : AlmaLinux release 8.10 (Cerulean Leopard)
+# Processor Detail   : AMD EPYC 9654P 96-Core Processor
+# CPU Frequency      : 2400.064 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 2
+# Host memory        : 16771 MB
+# Swap memory        : 4293 MB
+# Total Virtual      : 21064 MB
+# Available Virtual  : 9095 MB
+#-----------------------------------------------------------
+Sourcing tcl script '/global/snps_apps/vivado_2024.2-rev1/Vivado/2024.2/scripts/Vivado_init.tcl'
+440 Beta devices matching pattern found, 3 enabled.
+enable_beta_device: Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1768.180 ; gain = 134.195 ; free physical = 382 ; free virtual = 8178
+source /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/vivado_synth.tcl
+# create_project -part xc7a100tcsg324-1 -force vivado_synth.xpr /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0
+# read_ip /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci
+WARNING: [Vivado 12-25524] IP file '/slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci' was created in a subcore context and may not behave as expected when used in a standalone context.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/global/snps_apps/vivado_2024.2-rev1/Vivado/2024.2/patches/AR37126/vivado/data/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/global/snps_apps/vivado_2024.2-rev1/Vivado/2024.2/data/ip'.
+WARNING: [Vivado 12-13650] The IP file '/slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci' has been moved from its original location, as a result the outputs for this IP will now be generated in '/slowfs/cae265/users/project_2.gen/sources_1/bd/design_2/ip/design_2_mig_7series_custom_1_0'. Alternatively a copy of the IP can be imported into the project using one of the 'import_ip' or 'import_files' commands.
+# update_compile_order -fileset sources_1
+# set ip_synth_type [get_property GENERATE_SYNTH_CHECKPOINT [get_files /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci ]]
+# if {$ip_synth_type != "" && $ip_synth_type != "1"} {
+# puts "IP was generated using Global synth mode. Hence regenerating with OOC mode"
+# reset_target all [get_files /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci]
+# set_property GENERATE_SYNTH_CHECKPOINT TRUE [get_files /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci ]
+# }
+IP was generated using Global synth mode. Hence regenerating with OOC mode
+CRITICAL WARNING: [filemgmt 20-1366] Unable to reset target(s) for the following file is locked: /slowfs/cae265/users/estay/src/vivado-library/ip/mig_7series_custom/design_2_mig_7series_custom_1_0/design_2_mig_7series_custom_1_0.xci
+Locked reason: 
+* IP definition 'ddr2_7series_digilent (1.0)' for IP 'design_2_mig_7series_custom_1_0' (customized with software release 2024.2_AR37126) was not found in the IP Catalog.
+ERROR: [Common 17-107] Cannot change read-only property 'GENERATE_SYNTH_CHECKPOINT'.
+Resolution: Please refer to Vivado Properties Reference Guide (UG912) for more information on setting properties.
+INFO: [Common 17-206] Exiting Vivado at Sun Jan 12 01:11:14 2025...

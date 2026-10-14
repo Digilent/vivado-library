@@ -1,0 +1,2 @@
+# This file is automatically written.  Do not modify.
+proc gen_USERPARAMETER_BOARD_MIG_PARAM_VALUE {} {get_board_part_interfaces -filter "BUSDEF_NAME==ddrx_rtl && VENDOR==xilinx.com && LIBRARY==interface"}

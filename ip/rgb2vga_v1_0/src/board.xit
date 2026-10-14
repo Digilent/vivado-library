@@ -1,0 +1,71 @@
+package require xilinx::board 1.0
+namespace import ::xilinx::board::*
+set instname [current_inst]
+set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -force ${instname}_board.xdc]
+puts_ipfile $f_xdc "#--------------------Physical Constraints-----------------\n"
+if {[get_project_property BOARD] == "" } {
+    close_ipfile $f_xdc
+    return 
+}
+set board_if [get_property PARAM_VALUE.VGA_OUT_BOARD_INTERFACE]
+#set ddr3_addr_width [get_property MODELPARAM_VALUE.C0.DDR3_ADDR_WIDTH]
+#set ddr3_addr_width [get_property MODELPARAM_VALUE.C0.DDR3_ROW_WIDTH]
+#set ddr3_ba_width [get_property MODELPARAM_VALUE.C0.DDR3_BANK_WIDTH]
+#set ddr3_bg_width [get_property MODELPARAM_VALUE.C0.DDR3_BANK_GROUP_WIDTH]
+#set ddr3_ck_width [get_property MODELPARAM_VALUE.C0.DDR3_CK_WIDTH]
+#set ddr3_cke_width [get_property MODELPARAM_VALUE.C0.DDR3_CKE_WIDTH]
+#set ddr3_cs_width [get_property MODELPARAM_VALUE.C0.DDR3_COLUMN_WIDTH]
+## Sid: Check if this math is still correct;
+#set ddr3_dm_width [expr { [ get_property MODELPARAM_VALUE.C0.DDR3_DQ_WIDTH]/[get_property MODELPARAM_VALUE.C0.DDR3_DATABITS_PER_STROBE] }]
+#set ddr3_dq_width [get_property MODELPARAM_VALUE.C0.DDR3_DQ_WIDTH]
+#set ddr3_dqs_width [ expr { [ get_property MODELPARAM_VALUE.C0.DDR3_DQ_WIDTH]/[ get_property MODELPARAM_VALUE.C0.DDR3_DATABITS_PER_STROBE] } ]
+#set ddr3_odt_width [get_property MODELPARAM_VALUE.C0.DDR3_ODT_WIDTH]
+
+if { $board_if ne "Custom"} {
+## Sid: Check on act_n pin; Don't see on DDR3 top level
+#    board_add_port_constraints $f_xdc $board_if ACT_N c0_ddr3_act_n 
+
+#    board_add_port_constraints $f_xdc $board_if CLK    VGA_OUT_CLK
+    board_add_port_constraints $f_xdc $board_if RED     VGA_OUT_RED  
+    board_add_port_constraints $f_xdc $board_if GREEN   VGA_OUT_GREEN
+    board_add_port_constraints $f_xdc $board_if BLUE    VGA_OUT_BLUE     
+    board_add_port_constraints $f_xdc $board_if VSYNC   VGA_OUT_VSYNC
+    board_add_port_constraints $f_xdc $board_if HSYNC   VGA_OUT_HSYNC
+#    board_add_port_constraints $f_xdc $board_if DE     vga_out_vde 
+    close_ipfile $f_xdc
+ 
+ 
+#    board_add_port_constraints $f_xdc $board_if BG c0_ddr3_bg $ddr3_bg_width
+
+## Sid: ck_c should be ck_n on DDR3 and ck_t should be ck_p
+#    board_add_port_constraints $f_xdc $board_if CK_N c0_ddr3_ck_n $ddr3_ck_width
+#    board_add_port_constraints $f_xdc $board_if CK_P c0_ddr3_ck_p $ddr3_ck_width
+
+#    board_add_port_constraints $f_xdc $board_if WE_N c0_ddr3_we_n $ddr3_ck_width
+
+    #board_add_port_constraints $f_xdc $board_if CKE c0_ddr3_cke $ddr3_cke_width
+    #board_add_port_constraints $f_xdc $board_if CS_N c0_ddr3_cs_n 
+##Sid: dm_dbi does not exist; Going back to dm from dm_dbi_n
+    #board_add_port_constraints $f_xdc $board_if DM_N c0_ddr3_dm $ddr3_dm_width
+    #board_add_port_constraints $f_xdc $board_if DQ c0_ddr3_dq  $ddr3_dq_width
+##Sid: dqs_c should be dqs_n and dqs_t should be dqs_p
+#    board_add_port_constraints $f_xdc $board_if DQS_N c0_ddr3_dqs_n  $ddr3_dqs_width
+#    board_add_port_constraints $f_xdc $board_if DQS_P c0_ddr3_dqs_p $ddr3_dqs_width
+
+#    board_add_port_constraints $f_xdc $board_if ODT c0_ddr3_odt $ddr3_odt_width
+#    board_add_port_constraints $f_xdc $board_if RESET_N c0_ddr3_reset_n
+
+}
+
+#set board_if [get_property PARAM_VALUE.C0_CLOCK_BOARD_INTERFACE]
+#if { $board_if ne "Custom"} {
+#    board_add_port_constraints $f_xdc $board_if CLK_N c0_sys_clk_n
+#    board_add_port_constraints $f_xdc $board_if CLK_P c0_sys_clk_p
+#}
+#
+#set board_if [get_property PARAM_VALUE.RESET_BOARD_INTERFACE]
+#if { $board_if ne "Custom"} {
+#    board_add_port_constraints $f_xdc $board_if RST sys_rst
+#}
+
+#close_ipfile $f_xdc

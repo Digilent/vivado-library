@@ -1,40 +1,49 @@
 # Definitional proc to organize widgets for parameters.
 proc init_gui { IPINST } {
-  ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
   set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
-  ipgui::add_param $IPINST -name "kBlueDepth" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "kGreenDepth" -parent ${Page_0}
-  ipgui::add_param $IPINST -name "kRedDepth" -parent ${Page_0}
   ipgui::add_param $IPINST -name "VID_IN_DATA_WIDTH" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "KGREENDEPTH" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "KBLUEDEPTH" -parent ${Page_0}
+  ipgui::add_param $IPINST -name "KREDDEPTH" -parent ${Page_0}
 
+  ipgui::add_param $IPINST -name "Component_Name"
 
 }
 
-proc update_PARAM_VALUE.kBlueDepth { PARAM_VALUE.kBlueDepth } {
-	# Procedure called to update kBlueDepth when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.KBLUEDEPTH { PARAM_VALUE.KBLUEDEPTH } {
+	# Procedure called to update KBLUEDEPTH when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.kBlueDepth { PARAM_VALUE.kBlueDepth } {
-	# Procedure called to validate kBlueDepth
+proc validate_PARAM_VALUE.KBLUEDEPTH { PARAM_VALUE.KBLUEDEPTH } {
+	# Procedure called to validate KBLUEDEPTH
 	return true
 }
 
-proc update_PARAM_VALUE.kGreenDepth { PARAM_VALUE.kGreenDepth } {
-	# Procedure called to update kGreenDepth when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.KGREENDEPTH { PARAM_VALUE.KGREENDEPTH } {
+	# Procedure called to update KGREENDEPTH when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.kGreenDepth { PARAM_VALUE.kGreenDepth } {
-	# Procedure called to validate kGreenDepth
+proc validate_PARAM_VALUE.KGREENDEPTH { PARAM_VALUE.KGREENDEPTH } {
+	# Procedure called to validate KGREENDEPTH
 	return true
 }
 
-proc update_PARAM_VALUE.kRedDepth { PARAM_VALUE.kRedDepth } {
-	# Procedure called to update kRedDepth when any of the dependent parameters in the arguments change
+proc update_PARAM_VALUE.KREDDEPTH { PARAM_VALUE.KREDDEPTH } {
+	# Procedure called to update KREDDEPTH when any of the dependent parameters in the arguments change
 }
 
-proc validate_PARAM_VALUE.kRedDepth { PARAM_VALUE.kRedDepth } {
-	# Procedure called to validate kRedDepth
+proc validate_PARAM_VALUE.KREDDEPTH { PARAM_VALUE.KREDDEPTH } {
+	# Procedure called to validate KREDDEPTH
+	return true
+}
+
+proc update_PARAM_VALUE.VGA_OUT_BOARD_INTERFACE { PARAM_VALUE.VGA_OUT_BOARD_INTERFACE } {
+	# Procedure called to update VGA_OUT_BOARD_INTERFACE when any of the dependent parameters in the arguments change
+}
+
+proc validate_PARAM_VALUE.VGA_OUT_BOARD_INTERFACE { PARAM_VALUE.VGA_OUT_BOARD_INTERFACE } {
+	# Procedure called to validate VGA_OUT_BOARD_INTERFACE
 	return true
 }
 
@@ -53,18 +62,18 @@ proc update_MODELPARAM_VALUE.VID_IN_DATA_WIDTH { MODELPARAM_VALUE.VID_IN_DATA_WI
 	set_property value [get_property value ${PARAM_VALUE.VID_IN_DATA_WIDTH}] ${MODELPARAM_VALUE.VID_IN_DATA_WIDTH}
 }
 
-proc update_MODELPARAM_VALUE.kRedDepth { MODELPARAM_VALUE.kRedDepth PARAM_VALUE.kRedDepth } {
+proc update_MODELPARAM_VALUE.KREDDEPTH { MODELPARAM_VALUE.KREDDEPTH PARAM_VALUE.KREDDEPTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.kRedDepth}] ${MODELPARAM_VALUE.kRedDepth}
+	set_property value [get_property value ${PARAM_VALUE.KREDDEPTH}] ${MODELPARAM_VALUE.KREDDEPTH}
 }
 
-proc update_MODELPARAM_VALUE.kGreenDepth { MODELPARAM_VALUE.kGreenDepth PARAM_VALUE.kGreenDepth } {
+proc update_MODELPARAM_VALUE.KGREENDEPTH { MODELPARAM_VALUE.KGREENDEPTH PARAM_VALUE.KGREENDEPTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.kGreenDepth}] ${MODELPARAM_VALUE.kGreenDepth}
+	set_property value [get_property value ${PARAM_VALUE.KGREENDEPTH}] ${MODELPARAM_VALUE.KGREENDEPTH}
 }
 
-proc update_MODELPARAM_VALUE.kBlueDepth { MODELPARAM_VALUE.kBlueDepth PARAM_VALUE.kBlueDepth } {
+proc update_MODELPARAM_VALUE.KBLUEDEPTH { MODELPARAM_VALUE.KBLUEDEPTH PARAM_VALUE.KBLUEDEPTH } {
 	# Procedure called to set VHDL generic/Verilog parameter value(s) based on TCL parameter value
-	set_property value [get_property value ${PARAM_VALUE.kBlueDepth}] ${MODELPARAM_VALUE.kBlueDepth}
+	set_property value [get_property value ${PARAM_VALUE.KBLUEDEPTH}] ${MODELPARAM_VALUE.KBLUEDEPTH}
 }
 

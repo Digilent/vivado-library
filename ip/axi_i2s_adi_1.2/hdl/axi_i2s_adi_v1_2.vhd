@@ -14,7 +14,7 @@ use adi_common_v1_00_a.pl330_dma_fifo;
 use adi_common_v1_00_a.axi_ctrlif;
 
 
-entity axi_i2s_adi_v1_2 is
+entity axi_i2s_adi is
 	generic (
 		-- Users to add parameters here
 		C_SLOT_WIDTH		: integer := 24;
@@ -105,9 +105,9 @@ entity axi_i2s_adi_v1_2 is
 		s00_axi_rvalid	: out std_logic;
 		s00_axi_rready	: in std_logic
 	);
-end axi_i2s_adi_v1_2;
+end axi_i2s_adi;
 
-architecture arch_imp of axi_i2s_adi_v1_2 is
+architecture arch_imp of axi_i2s_adi is
 
 	-- component declaration
 	component axi_i2s_adi_S_AXI is
