@@ -147,7 +147,7 @@ begin
       if (pCtlTknRst = '1') then
          pCtlTknCnt <= 0;
       else
-         pCtlTknCnt <= pCtlTknCnt + 1;
+         pCtlTknCnt <= (pCtlTknCnt + 1) mod kCtlTknCount;
          -- Overflow
          if (pCtlTknCnt = kCtlTknCount - 1) then
             pCtlTknOvf <= '1';
@@ -231,7 +231,7 @@ begin
       if (pDelayWaitRst = '1') then
          pDelayWaitCnt <= 0;
       else
-         pDelayWaitCnt <= pDelayWaitCnt + 1;
+         pDelayWaitCnt <= (pDelayWaitCnt + 1) mod kDelayWaitEnd;
          if (pDelayWaitCnt = kDelayWaitEnd - 1) then
             pDelayWaitOvf <= '1';
          else

@@ -167,6 +167,10 @@ signal dbg_pEyeSize : eyeSize_t;
 
 signal pTrigOut, pTrigOutAck, rTrigOutAck, rTrigOut : std_logic;
 
+type OtherCh_t is array (2 downto 0) of std_logic_vector(1 downto 0);
+signal OtherChRdy : OtherCh_t;
+signal OtherChVld : OtherCh_t;
+
 begin
 
 ResetActiveLow: if not kRstActiveHigh generate
@@ -226,6 +230,10 @@ LockedSync: entity work.ResetBridge
                
 -- Three data channel decoders
 DataDecoders: for iCh in 2 downto 0 generate
+   OtherChRdy(iCh)(0) <= pRdy((iCh+1) mod 3);
+   OtherChRdy(iCh)(1) <= pRdy((iCh+2) mod 3);
+   OtherChVld(iCh)(0) <= pVld((iCh+1) mod 3);
+   OtherChVld(iCh)(1) <= pVld((iCh+2) mod 3);
    DecoderX: entity work.TMDS_Decoder
       generic map (
          kCtlTknCount => kMinTknCntForBlank, --how many subsequent control tokens make a valid blank detection (DVI spec)
@@ -241,8 +249,8 @@ DataDecoders: for iCh in 2 downto 0 generate
          pRst                    => pRst_int,
          sDataIn_p               => TMDS_Data_p(iCh),                           
          sDataIn_n               => TMDS_Data_n(iCh),                                       
-         pOtherChRdy(1 downto 0) => pRdy((iCh+1) mod 3) & pRdy((iCh+2) mod 3), -- tie channels together for channel de-skew
-         pOtherChVld(1 downto 0) => pVld((iCh+1) mod 3) & pVld((iCh+2) mod 3), -- tie channels together for channel de-skew
+         pOtherChRdy(1 downto 0) => OtherChRdy(iCh), -- tie channels together for channel de-skew
+         pOtherChVld(1 downto 0) => OtherChVld(iCh), -- tie channels together for channel de-skew
          
          pC0                     => pC0(iCh),
          pC1                     => pC1(iCh),                    

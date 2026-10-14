@@ -179,10 +179,10 @@ DATABYTE_SHREG: process (SampleClk)
 				bitCount <= 7;
 			elsif (shiftBitOut = '1' and fSCLFalling = '1') then
 				dataByte <= dataByte(dataByte'high-1 downto 0) & dSDA;
-				bitCount <= bitCount - 1;
+				bitCount <= (bitCount - 1) mod 8;
 			elsif (shiftBitIn = '1' and fSCLRising = '1') then
 				dataByte <= dataByte(dataByte'high-1 downto 0) & dSDA;
-				bitCount <= bitCount - 1;
+				bitCount <= (bitCount - 1) mod 8;
 			end if;
 		end if;
 	end process;
