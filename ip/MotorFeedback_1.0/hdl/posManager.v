@@ -33,7 +33,7 @@ module posManager (
    end
 
    wire subtract;
-   assign subtract = pos12[15] | pos22[15];
+   assign subtract = (pos12[15] | pos22[15]) & (pos12 != 16'b0) & (pos22 != 16'b0);
 
    reg [15:0] distance;
    always @ (*) begin
