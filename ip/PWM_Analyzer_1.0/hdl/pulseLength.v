@@ -48,9 +48,8 @@ module pulseLength (
       if (reset) begin
          count_clk0 <= 31'b0;
          count_clk1 <= 31'b0;
-         pw_high    <= 31'bX;
-         pw_low     <= 31'bX;
-         pwm_per    <= 32'bX;
+         pw_high    <= 31'b0;
+         pw_low     <= 31'b0;
       end else begin
          case (ps)
             first:   begin
@@ -72,8 +71,8 @@ module pulseLength (
                         count_clk1 <= count_clk1 + 1'b1;
                      end
             default: begin
-                        pw_low     <= 31'bX;
-                        pw_high    <= 31'bX;
+                        pw_low     <= 31'b0;
+                        pw_high    <= 31'b0;
                         count_clk0 <= 31'b0;
                         count_clk1 <= 31'b0;
                      end

@@ -36,6 +36,7 @@
  *       Duty cycle of PWM signal, based on most recent period
  *        - percentage rounded to nearest integer
  *        - decimal-fraction rounded to 2 decimal places
+ *       0 if nothing has been measured since reset
  *
  * Description:
  *       Return duty cycle of PWM signal as
@@ -45,6 +46,8 @@
 u32 PWM_Analyzer_GetDutyCycle_percent(u32 baseAddr) {
    u64 on_time = (u64) PWM_Analyzer_GetOnTime_clkEdges(baseAddr);
    u32 period = PWM_Analyzer_GetPeriod_clkEdges(baseAddr);
+   if (period == 0)
+      return 0;
    return (u32) (on_time * 1000 / period + 5) / 10;
 }
 
