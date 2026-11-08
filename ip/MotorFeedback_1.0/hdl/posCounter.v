@@ -18,16 +18,16 @@ module posCounter (
       sensor_prev =  1'b0;
    end
 
+   wire sensor_rise;
+   assign sensor_rise = ~sensor_prev & sensor;
+
    always @ (posedge clk) begin
-      if (clear[1] | clear[0]) begin
-         if (clear[0]) pos1 <= 16'b0;
-         if (clear[1]) pos2 <= 16'b0;
-      end else if (subtract) begin
-         pos2 <= pos2 - distance;
-      end else if (~sensor_prev & sensor) begin
-         pos1 <= pos1 + 1'b1;
-         pos2 <= pos2 + 1'b1;
-      end
+      if (clear[0])         pos1 <= 16'b0;
+      else if (sensor_rise) pos1 <= pos1 + 1'b1;
+
+      if (clear[1])         pos2 <= 16'b0;
+      else if (subtract)    pos2 <= pos2 - distance + sensor_rise;
+      else if (sensor_rise) pos2 <= pos2 + 1'b1;
 
       sensor_prev <= sensor;
    end
